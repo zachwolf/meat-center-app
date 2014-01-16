@@ -2,7 +2,7 @@
   "name": "meat-center-app",
   "version": "0.1.0",
   "description": "Source code for meat center order tracking web app.",
-  "main": "app/app.js",
+  "main": "webapp/app.js",
   "scripts": {
     "test": "grunt karma"
   },
