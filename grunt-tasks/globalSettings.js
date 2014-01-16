@@ -12,7 +12,7 @@ settings.SCRIPT_SOURCE_PATH = settings.SOURCE_PATH + "/js";
 settings.MARKUP_SOURCE_PATH = settings.SOURCE_PATH + "/markup";
 
 // build settings
-settings.BUILD_PATH        = settings.WEBAPP_PATH + "/public";
+settings.BUILD_PATH        = settings.SERVER_PATH + "/public";
 settings.STYLE_BUILD_PATH  = settings.BUILD_PATH  + "/style";
 settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH  + "/js";
 
