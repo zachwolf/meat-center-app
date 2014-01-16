@@ -42,16 +42,16 @@ module.exports = function (grunt) {
         ]
       },
       // node app
-      // server: {
-      //   files: [
-      //     SETTINGS.SERVER_PATH + '/*',
-      //     SETTINGS.SERVER_PATH + '/**/*',
-      //     "!" + SETTINGS.SERVER_PATH + '/public/**'
-      //   ],
-      //   tasks: [
-      //     'server:restart'
-      //   ]
-      // },
+      server: {
+        files: [
+          SETTINGS.SERVER_PATH + '/*',
+          SETTINGS.SERVER_PATH + '/**/*',
+          "!" + SETTINGS.BUILD_PATH + '/**'
+        ],
+        tasks: [
+          'nodemon:dev'
+        ]
+      },
       // compile html business
       markup: {
         files: [

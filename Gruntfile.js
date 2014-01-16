@@ -60,6 +60,19 @@ module.exports = function(grunt) {
         app: 'Google Chrome'
       }
     },
+    nodemon: {
+      dev: {
+        options: {
+          file: SETTINGS.SERVER_PATH + 'app.js',
+          ignoredFiles: [ SETTINGS.SERVER_PATH + '/public/**'],
+          watchedExtensions: ['js'],
+          watchedFolders: [ SETTINGS.SERVER_PATH ],
+          env: {
+            PORT: SETTINGS.SERVER_PORT
+          }
+        }
+      }
+    },
     copy: {
       scripts: {
         files: [
