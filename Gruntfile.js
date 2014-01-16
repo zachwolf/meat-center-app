@@ -21,6 +21,8 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
+          sassDir : SETTINGS.STYLE_SOURCE_PATH,
+          cssDir  : SETTINGS.STYLE_BUILD_PATH,
           outputStyle: 'expanded',
           watch: false
         }
