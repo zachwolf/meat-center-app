@@ -19,6 +19,7 @@ app.get('*', function(req, res){
     res.send('Page Not Found', 404);
 });
 
+// export app so grunt can start the server
 module.exports = app;
 
 /*
