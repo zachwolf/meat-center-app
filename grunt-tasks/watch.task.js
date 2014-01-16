@@ -59,7 +59,7 @@ module.exports = function (grunt) {
           SETTINGS.MARKUP_SOURCE_PATH + '/**/*.haml'
         ],
         tasks: [
-          'buildMarkup'
+          'haml:dev'
         ]
       }
     };
@@ -115,7 +115,7 @@ module.exports = function (grunt) {
           SETTINGS.MARKUP_SOURCE_PATH + '/**/*.haml'
         ],
         tasks: [
-          'buildMarkup'
+          'haml:dist'
         ]
       }
     };

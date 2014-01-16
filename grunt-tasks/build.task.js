@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     grunt.task.run('jshint:dev');
     grunt.task.run('karma:unit');
     grunt.task.run('copy:scripts');
-    grunt.task.run('buildMarkup');
+    grunt.task.run('haml:dev');
   });
 
   grunt.registerTask('build:dist', "build local to :dist settings", function () {
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     grunt.task.run('jshint:dist');
     grunt.task.run('karma:unit');
     grunt.task.run('requirejs:compile');
-    grunt.task.run('buildMarkup');
+    grunt.task.run('haml:dist');
   });
 
 };
