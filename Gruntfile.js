@@ -43,6 +43,7 @@ module.exports = function(grunt) {
         }
       }
     },
+    /*
     connect: {
       local: {
         options: {
@@ -50,6 +51,13 @@ module.exports = function(grunt) {
           base: SETTINGS.BUILD_PATH,
           open: true
         }
+      }
+    },
+    */
+    open : {
+      local : {
+        path: 'http://localhost:' + SETTINGS.SERVER_PORT,
+        app: 'Google Chrome'
       }
     },
     copy: {

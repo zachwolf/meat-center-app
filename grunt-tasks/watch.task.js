@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     // start a local server
     // grunt.task.run("connect:local");
     grunt.task.run("nodeServer");
+    grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
@@ -69,7 +70,7 @@ module.exports = function (grunt) {
     // start a local server
     // grunt.task.run("connect:local");
     grunt.task.run("nodeServer");
-
+    grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
