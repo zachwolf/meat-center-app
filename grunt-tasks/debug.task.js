@@ -1,4 +1,5 @@
-var util = require('util');
+var util     = require('util'),
+		SETTINGS = require("./globalSettings");
 
 module.exports = function (grunt) {
 
@@ -6,7 +7,7 @@ module.exports = function (grunt) {
 		// console.log(util.inspect(require, { showHidden: true, depth: null }));
     // grunt.file.write("test.txt", util.inspect(grunt, { showHidden: true, depth: null }));
     console.log("-------------------------------------------------");
-    console.log("globalSettings", require("./globalSettings"));
+    console.log(util.inspect(require("../" + SETTINGS.SERVER_PATH + '/app.js'), { showHidden: true, depth: null }));
     console.log("-------------------------------------------------");
   });
 
