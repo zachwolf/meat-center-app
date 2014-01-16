@@ -11,20 +11,15 @@ var util = require('util'),
 
 console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
-module.exports = app;
-
-
 app.get('/', function(req, res){
-    res.send('Hello World');
-});
-
-app.get('/', function(req, res){
-    res.send('Hello World');
+    res.send('Hello World!!!');
 });
 
 app.get('*', function(req, res){
     res.send('Page Not Found', 404);
 });
+
+module.exports = app;
 
 /*
 

@@ -41,6 +41,17 @@ module.exports = function (grunt) {
           'copy:scripts'
         ]
       },
+      // node app
+      // server: {
+      //   files: [
+      //     SETTINGS.SERVER_PATH + '/*',
+      //     SETTINGS.SERVER_PATH + '/**/*',
+      //     "!" + SETTINGS.SERVER_PATH + '/public/**'
+      //   ],
+      //   tasks: [
+      //     'server:restart'
+      //   ]
+      // },
       // compile html business
       markup: {
         files: [
