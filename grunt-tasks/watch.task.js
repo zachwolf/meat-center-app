@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 
     // start a local server
     // grunt.task.run("connect:local");
-    grunt.task.run("nodeServer");
+    grunt.task.run("server:start");
     grunt.task.run("open:local");
 
     conf = {
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 
     // start a local server
     // grunt.task.run("connect:local");
-    grunt.task.run("nodeServer");
+    grunt.task.run("server:start");
     grunt.task.run("open:local");
 
     conf = {
