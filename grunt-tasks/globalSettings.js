@@ -1,8 +1,9 @@
 var _ = require('underscore'),
     settings = {};
 
-// Localhost port number
+// Localhost settings
 settings.SERVER_PORT = 1337; // 2 cool
+settings.SERVER_PATH = "./webapp";
 
 // source settings
 settings.SOURCE_PATH = "./source";
@@ -11,9 +12,9 @@ settings.SCRIPT_SOURCE_PATH = settings.SOURCE_PATH + "/js";
 settings.MARKUP_SOURCE_PATH = settings.SOURCE_PATH + "/markup";
 
 // build settings
-settings.BUILD_PATH        = "./webapp/public";
-settings.STYLE_BUILD_PATH  = settings.BUILD_PATH + "/style";
-settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH + "/js";
+settings.BUILD_PATH        = settings.WEBAPP_PATH + "/public";
+settings.STYLE_BUILD_PATH  = settings.BUILD_PATH  + "/style";
+settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH  + "/js";
 
 // hint settings
 settings.JSHINT_BASE_SETTINGS = {
