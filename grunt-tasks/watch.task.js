@@ -12,7 +12,8 @@ module.exports = function (grunt) {
     grunt.task.run("build:dev");
 
     // start a local server
-    grunt.task.run("connect:local");
+    // grunt.task.run("connect:local");
+    grunt.task.run("nodeServer");
 
     conf = {
       // reload the page when things change
@@ -65,8 +66,10 @@ module.exports = function (grunt) {
     // clean out and recompile all of BUILD_PATH
     grunt.task.run("build:dist");
 
-    // // start a local server
-    grunt.task.run("connect:local");
+    // start a local server
+    // grunt.task.run("connect:local");
+    grunt.task.run("nodeServer");
+
 
     conf = {
       // reload the page when things change

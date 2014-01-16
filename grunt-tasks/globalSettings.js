@@ -1,6 +1,9 @@
 var _ = require('underscore'),
     settings = {};
 
+// Localhost port number
+settings.SERVER_PORT = 1337; // too cool
+
 // source settings
 settings.SOURCE_PATH = "./source";
 settings.STYLE_SOURCE_PATH  = settings.SOURCE_PATH + "/style";
