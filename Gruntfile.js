@@ -65,7 +65,7 @@ module.exports = function(grunt) {
     nodemon: {
       dev: {
         options: {
-          file: SETTINGS.SERVER_PATH + 'app.js',
+          file: SETTINGS.SERVER_PATH + '/app.js',
           ignoredFiles: [ SETTINGS.SERVER_PATH + '/public/**'],
           watchedExtensions: ['js'],
           watchedFolders: [ SETTINGS.SERVER_PATH ],
