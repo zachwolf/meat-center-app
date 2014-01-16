@@ -12,7 +12,7 @@ var util = require('util'),
 console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
 app.get('/', function(req, res){
-    res.send('Hello World!');
+    res.sendfile(__dirname + '/public/index.html');
 });
 
 app.get('*', function(req, res){
