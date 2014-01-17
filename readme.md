@@ -1,6 +1,5 @@
 # Todos
 
-- set up asset serving
 - ? share file paths with haml
 
 - set up views

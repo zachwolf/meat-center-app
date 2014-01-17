@@ -5,36 +5,33 @@ var util = require('util'),
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
-console.log("started");
+console.log("-------------------------------------------------");
+console.log("app.js called");
+console.log("-------------------------------------------------");
 
 app.get('/', function(req, res){
-    // res.sendfile(__dirname + '/public/index.html');
-    res.send("hello world!");
+	console.log("app.get('/')");
+  res.sendfile(__dirname + '/public/index.html');
+  // res.send("hello world!");
 });
 
-/*
+
 app.get(/^(.+)$/, function(req, res) {
-	console.log("-------------------------------------------------");
-	console.log("hi");
-	console.log("-------------------------------------------------");
+	console.log("app.get asset");
 	res.sendfile(__dirname + "/public/" + req.params[0]);
 });
-*/
+
 
 
 app.get('*', function(req, res){
     res.send('Page Not Found', 404);
 });
 
-// export app so grunt can start the server
 
-module.exports.app = app;
-// app.listen(SETTINGS.SERVER_PORT)
-// var foo = app.listen(1337);
-
-/*
-
-app.listen(1337);
-console.log('Express server started on port 1337');
-
-*/
+if ( process.execArgv[0] === "--standalone" ) {
+	// start in line when we're not running things through grunt
+	module.exports.app = app.listen(1337);
+} else {
+	// export app so grunt can start the server
+	module.exports.app = app;
+}
