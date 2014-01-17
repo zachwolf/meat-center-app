@@ -63,6 +63,12 @@ module.exports = function(grunt) {
       }
     },
     nodemon: {
+      /*
+      tasks: ['nodemon', 'node-inspector', 'watch'],
+      options: {
+        logConcurrentOutput: true
+      }
+      */
       dev: {
         options: {
           file: SETTINGS.SERVER_PATH + '/app.js',

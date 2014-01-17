@@ -1,19 +1,20 @@
-/*
-- logout
-- login
-- view / search db
-- new entry
-*/
 
 var util = require('util'),
 		express = require('express'),
     app = express();
 
-console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+// console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/public/index.html');
 });
+
+/*app.get(/^(.+)$/, function(req, res) {
+	console.log("-------------------------------------------------");
+	console.log("hi");
+	console.log("-------------------------------------------------");
+	res.sendfile(__dirname + "/public/" + req.params[0]);
+});*/
 
 app.get('*', function(req, res){
     res.send('Page Not Found', 404);

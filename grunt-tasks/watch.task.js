@@ -2,6 +2,12 @@ var SETTINGS = require("./globalSettings");
 
 module.exports = function (grunt) {
 
+  grunt.registerTask('server:dev', "watch and build local to :dev settings", function () {
+    grunt.task.run("server:start");
+    grunt.task.run("open:local");
+    grunt.task.run("nodemon:dev");
+  });
+
   grunt.registerTask('watch:dev', "watch and build local to :dev settings", function () {
 
     var conf = {};
@@ -13,8 +19,8 @@ module.exports = function (grunt) {
 
     // start a local server
     // grunt.task.run("connect:local");
-    grunt.task.run("server:start");
-    grunt.task.run("open:local");
+    // grunt.task.run("server:start");
+    // grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
@@ -80,8 +86,8 @@ module.exports = function (grunt) {
 
     // start a local server
     // grunt.task.run("connect:local");
-    grunt.task.run("server:start");
-    grunt.task.run("open:local");
+    // grunt.task.run("server:start");
+    // grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
