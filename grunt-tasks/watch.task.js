@@ -3,21 +3,21 @@ var SETTINGS = require("./globalSettings");
 module.exports = function (grunt) {
 
 
-  // grunt.registerTask('concurrent:dev', "run nodemon and watch concurrently.", function () {
+  grunt.registerTask('concurrent:dev', "run nodemon and watch concurrently.", function () {
 
-  //   var conf = {};
+    var conf = {};
 
-  //   conf = {
-  //     tasks: ['nodemon:dev', 'watch:dev'],
-  //     options: {
-  //       logConcurrentOutput: true
-  //     }
-  //   };
+    conf = {
+      tasks: ['nodemon:dev', 'watch:dev'],
+      options: {
+        logConcurrentOutput: true
+      }
+    };
 
-  //   grunt.config('concurrent', conf);
-  //   grunt.task.run("concurrent");
+    grunt.config('concurrent', conf);
+    grunt.task.run("concurrent");
 
-  // });
+  });
 
 
   grunt.registerTask('watch:dev', "watch and build local to :dev settings", function () {
@@ -59,16 +59,17 @@ module.exports = function (grunt) {
         ]
       },
 
-      server: {
-        files: [
-          SETTINGS.SERVER_PATH + '/*',
-          SETTINGS.SERVER_PATH + '/**/*',
-          "!" + SETTINGS.BUILD_PATH + '/**'
-        ]/*,
-        tasks: [
-          'server:stop'
-        ]*/
-      },
+      // server: {
+      //   files: [
+      //     SETTINGS.SERVER_PATH + '/*',
+      //     SETTINGS.SERVER_PATH + '/**/*',
+      //     "!" + SETTINGS.BUILD_PATH + '/**'
+      //   ],
+      //   tasks: [
+      //     'debug',
+      //     'server:stop'
+      //   ]
+      // },
       // compile html business
       markup: {
         files: [
