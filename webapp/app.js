@@ -21,10 +21,6 @@ app.get(/^(.+)$/, function(req, res) {
 });
 */
 
-console.log("-------------------------------------------------");
-console.log("process", process);
-console.log("-------------------------------------------------");
-
 
 app.get('*', function(req, res){
     res.send('Page Not Found', 404);
@@ -32,7 +28,7 @@ app.get('*', function(req, res){
 
 // export app so grunt can start the server
 
-module.exports = app.listen(1337);
+module.exports.app = app;
 // app.listen(SETTINGS.SERVER_PORT)
 // var foo = app.listen(1337);
 

@@ -2,24 +2,6 @@ var SETTINGS = require("./globalSettings");
 
 module.exports = function (grunt) {
 
-
-  grunt.registerTask('concurrent:dev', "run nodemon and watch concurrently.", function () {
-
-    var conf = {};
-
-    conf = {
-      tasks: ['nodemon:dev', 'watch:dev'],
-      options: {
-        logConcurrentOutput: true
-      }
-    };
-
-    grunt.config('concurrent', conf);
-    grunt.task.run("concurrent");
-
-  });
-
-
   grunt.registerTask('watch:dev', "watch and build local to :dev settings", function () {
 
     var conf = {};
@@ -27,10 +9,10 @@ module.exports = function (grunt) {
     console.log("watch:dev called");
 
     // clean out and recompile all of BUILD_PATH
-    // grunt.task.run("build:dev");
+    grunt.task.run("build:dev");
 
     // start a local server
-    // grunt.task.run("server:start");
+    grunt.task.run("server:start");
     grunt.task.run("open:local");
 
     conf = {
@@ -58,18 +40,6 @@ module.exports = function (grunt) {
           'copy:scripts'
         ]
       },
-
-      // server: {
-      //   files: [
-      //     SETTINGS.SERVER_PATH + '/*',
-      //     SETTINGS.SERVER_PATH + '/**/*',
-      //     "!" + SETTINGS.BUILD_PATH + '/**'
-      //   ],
-      //   tasks: [
-      //     'debug',
-      //     'server:stop'
-      //   ]
-      // },
       // compile html business
       markup: {
         files: [
@@ -97,8 +67,8 @@ module.exports = function (grunt) {
     grunt.task.run("build:dist");
 
     // start a local server
-    grunt.task.run("server:start");
-    grunt.task.run("open:local");
+    // grunt.task.run("server:start");
+    // grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
