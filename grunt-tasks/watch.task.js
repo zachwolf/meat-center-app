@@ -9,7 +9,7 @@ module.exports = function (grunt) {
     console.log("watch:dev called");
 
     // clean out and recompile all of BUILD_PATH
-    grunt.task.run("build:dev");
+    // grunt.task.run("build:dev");
 
     // start a local server
     grunt.task.run("server:start");
