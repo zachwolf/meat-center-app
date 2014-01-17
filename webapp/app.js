@@ -5,8 +5,11 @@ var util = require('util'),
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
+console.log("started");
+
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/public/index.html');
+    // res.send("hello world!");
 });
 
 /*app.get(/^(.+)$/, function(req, res) {
@@ -21,7 +24,11 @@ app.get('*', function(req, res){
 });
 
 // export app so grunt can start the server
-module.exports = app;
+// module.exports = app;
+app.listen(1337);
+// app.listen(SETTINGS.SERVER_PORT)
+// var foo = app.listen(1337);
+// module.exports = foo;
 
 /*
 

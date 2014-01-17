@@ -45,17 +45,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    /*
-    connect: {
-      local: {
-        options: {
-          port: 9000,
-          base: SETTINGS.BUILD_PATH,
-          open: true
-        }
-      }
-    },
-    */
     open : {
       local : {
         path: 'http://localhost:' + SETTINGS.SERVER_PORT,
@@ -63,12 +52,6 @@ module.exports = function(grunt) {
       }
     },
     nodemon: {
-      /*
-      tasks: ['nodemon', 'node-inspector', 'watch'],
-      options: {
-        logConcurrentOutput: true
-      }
-      */
       dev: {
         options: {
           file: SETTINGS.SERVER_PATH + '/app.js',

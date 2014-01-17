@@ -2,11 +2,23 @@ var SETTINGS = require("./globalSettings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('server:dev', "watch and build local to :dev settings", function () {
-    grunt.task.run("server:start");
-    grunt.task.run("open:local");
-    grunt.task.run("nodemon:dev");
-  });
+
+  // grunt.registerTask('concurrent:dev', "run nodemon and watch concurrently.", function () {
+
+  //   var conf = {};
+
+  //   conf = {
+  //     tasks: ['nodemon:dev', 'watch:dev'],
+  //     options: {
+  //       logConcurrentOutput: true
+  //     }
+  //   };
+
+  //   grunt.config('concurrent', conf);
+  //   grunt.task.run("concurrent");
+
+  // });
+
 
   grunt.registerTask('watch:dev', "watch and build local to :dev settings", function () {
 
@@ -15,12 +27,11 @@ module.exports = function (grunt) {
     console.log("watch:dev called");
 
     // clean out and recompile all of BUILD_PATH
-    grunt.task.run("build:dev");
+    // grunt.task.run("build:dev");
 
     // start a local server
-    // grunt.task.run("connect:local");
     // grunt.task.run("server:start");
-    // grunt.task.run("open:local");
+    grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
@@ -47,17 +58,17 @@ module.exports = function (grunt) {
           'copy:scripts'
         ]
       },
-      // node app
-      // server: {
-      //   files: [
-      //     SETTINGS.SERVER_PATH + '/*',
-      //     SETTINGS.SERVER_PATH + '/**/*',
-      //     "!" + SETTINGS.BUILD_PATH + '/**'
-      //   ],
-      //   tasks: [
-      //     'nodemon:dev'
-      //   ]
-      // },
+
+      server: {
+        files: [
+          SETTINGS.SERVER_PATH + '/*',
+          SETTINGS.SERVER_PATH + '/**/*',
+          "!" + SETTINGS.BUILD_PATH + '/**'
+        ]/*,
+        tasks: [
+          'server:stop'
+        ]*/
+      },
       // compile html business
       markup: {
         files: [
@@ -85,9 +96,8 @@ module.exports = function (grunt) {
     grunt.task.run("build:dist");
 
     // start a local server
-    // grunt.task.run("connect:local");
-    // grunt.task.run("server:start");
-    // grunt.task.run("open:local");
+    grunt.task.run("server:start");
+    grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
