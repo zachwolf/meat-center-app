@@ -9,7 +9,8 @@ module.exports = function (grunt) {
     var conf = {},
         FILES = {};
 
-    FILES[ SETTINGS.BUILD_PATH + "/index.html" ] = [ SETTINGS.MARKUP_SOURCE_PATH + '/index.haml',
+    FILES[ SETTINGS.BUILD_PATH + "/index.html" ] = [ SETTINGS.MARKUP_SOURCE_PATH + '/partials/header.haml',
+                                                     SETTINGS.MARKUP_SOURCE_PATH + '/index.haml',
                                                      SETTINGS.MARKUP_SOURCE_PATH + '/livereload.haml'];
 
     conf = {
