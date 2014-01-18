@@ -1,7 +1,7 @@
 # Todos
 
-- remove haml
--- ? implement some sort of HTML partial business
+- X remove haml
+-- ? implement some sort of HTML partial business (.kit?)
 - keep portions secret from github
 
 - set up views
