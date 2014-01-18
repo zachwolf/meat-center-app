@@ -15,6 +15,7 @@ settings.MARKUP_SOURCE_PATH = settings.SOURCE_PATH + "/markup";
 settings.BUILD_PATH        = settings.SERVER_PATH + "/public";
 settings.STYLE_BUILD_PATH  = settings.BUILD_PATH  + "/style";
 settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH  + "/js";
+settings.MARKUP_BUILD_PATH = settings.BUILD_PATH  + "";
 
 // hint settings
 settings.JSHINT_BASE_SETTINGS = {

@@ -43,11 +43,11 @@ module.exports = function (grunt) {
       // compile html business
       markup: {
         files: [
-          SETTINGS.MARKUP_SOURCE_PATH + '/*.haml',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.haml'
+          SETTINGS.MARKUP_SOURCE_PATH + '/*.html',
+          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.html'
         ],
         tasks: [
-          'haml:dev'
+          'copy:markup'
         ]
       }
     };
@@ -98,11 +98,11 @@ module.exports = function (grunt) {
       // compile html business
       markup: {
         files: [
-          SETTINGS.MARKUP_SOURCE_PATH + '/*.haml',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.haml'
+          SETTINGS.MARKUP_SOURCE_PATH + '/*.html',
+          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.html'
         ],
         tasks: [
-          'haml:dist'
+          'copy:markup'
         ]
       }
     };

@@ -62,6 +62,16 @@ module.exports = function(grunt) {
             dest: SETTINGS.SCRIPT_BUILD_PATH
           }
         ]
+      },
+      markup: {
+        files: [
+          {
+            src: [ '**' ],
+            expand: true,
+            cwd: SETTINGS.MARKUP_SOURCE_PATH + '/',
+            dest: SETTINGS.MARKUP_BUILD_PATH
+          }
+        ]
       }
     },
     requirejs: {
