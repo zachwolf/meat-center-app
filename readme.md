@@ -1,6 +1,8 @@
 # Todos
 
-- ? share file paths with haml
+- remove haml
+-- ? implement some sort of HTML partial business
+- keep portions secret from github
 
 - set up views
 -- logout
