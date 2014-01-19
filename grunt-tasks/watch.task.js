@@ -98,8 +98,8 @@ module.exports = function (grunt) {
       // compile html business
       markup: {
         files: [
-          SETTINGS.MARKUP_SOURCE_PATH + '/*.html',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.html'
+          // SETTINGS.MARKUP_SOURCE_PATH + '/*',
+          SETTINGS.MARKUP_SOURCE_PATH + '/**'
         ],
         tasks: [
           'copy:markup'

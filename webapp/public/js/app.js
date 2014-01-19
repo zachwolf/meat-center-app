@@ -15,6 +15,11 @@ define(function () {
 
     "use strict";
 
+    console.log("-------------------------------------------------");
+    console.log("App started.");
+    console.log("-------------------------------------------------");
+
+
 	var app = "hi";
 
 	return app;
