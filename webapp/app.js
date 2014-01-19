@@ -19,7 +19,8 @@ hbs = exphbs.create({
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
+app.use(express.compress());
+app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 
 app.get('/', function(req, res){
