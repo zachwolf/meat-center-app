@@ -5,6 +5,17 @@ var util    = require('util'),
 		exphbs  = require('express3-handlebars');
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+hbs = exphbs.create({
+    defaultLayout: 'main',
+    // helpers      : helpers,
+
+    // Uses multiple partials dirs, templates in "shared/templates/" are shared
+    // with the client-side of the app (see below).
+    partialsDir: [
+        // 'shared/templates/',
+        'views/partials/'
+    ]
+});
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

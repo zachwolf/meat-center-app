@@ -9,10 +9,10 @@ module.exports = function (grunt) {
     console.log("watch:dev called");
 
     // clean out and recompile all of BUILD_PATH
-    // grunt.task.run("build:dev");
+    grunt.task.run("build:dev");
 
     // start a local server
-    grunt.task.run("server:start");
+    // grunt.task.run("server:start");
     grunt.task.run("open:local");
 
     conf = {
@@ -43,8 +43,8 @@ module.exports = function (grunt) {
       // compile html business
       markup: {
         files: [
-          SETTINGS.MARKUP_SOURCE_PATH + '/*.html',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.html'
+          SETTINGS.MARKUP_SOURCE_PATH + '/*.handlebars',
+          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.handlebars'
         ],
         tasks: [
           'copy:markup'
@@ -98,8 +98,8 @@ module.exports = function (grunt) {
       // compile html business
       markup: {
         files: [
-          // SETTINGS.MARKUP_SOURCE_PATH + '/*',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**'
+          SETTINGS.MARKUP_SOURCE_PATH + '/*.handlebars',
+          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.handlebars'
         ],
         tasks: [
           'copy:markup'
