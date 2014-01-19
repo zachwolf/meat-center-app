@@ -14,6 +14,20 @@
 -- view / search db
 -- new entry
 
+# routes:
+/
+/login
+/logout
+/post
+/post/new
+/post/:id
+/post/:id/edit
+/post/:id/delete
+/post/search?[property]=[value]
+/admin
+/admin/newuser
+/admin/edituser/:id
+
 ***
 
 Generated with the help of [Starter](https://github.com/zachwolf/Starter).
