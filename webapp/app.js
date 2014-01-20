@@ -83,43 +83,10 @@ app.get(/^(.+)$/, site.assets);
 app.get('*', site.notFound);
 
 /*
-assets:
-function(req, res) {
-  res.sendfile(__dirname + "/public/" + req.params[0]);
-}
-not found:
-function(req, res){
-    res.send('Page Not Found', 404);
-}*/
-
-
-/*
-/
-/login
-/logout
-/post
-/post/new
-/post/:id
-/post/:id/edit
-/post/:id/delete
-/post/search?[property]=[value]
-/admin
-/admin/newuser
-/admin/edituser/:id
-*/
+ * App startup
+ */
 
 module.exports.app = app.listen(1337);
-
-/*
-if ( process.execArgv[0] === "--standalone" ) {
-  // start in line when we're not running things through grunt
-  console.log("standalone");
-  module.exports.app = app.listen(1337);
-} else {
-  // export app so grunt can start the server
-  module.exports.app = app;
-}
-*/
 
 console.log("-------------------------------------------------");
 console.log("app.js called");
