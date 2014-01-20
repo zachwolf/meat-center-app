@@ -23,8 +23,8 @@ MongoClient = MongoDB.MongoClient;
 Server      = MongoDB.Server;
 
 mongoclient = new MongoClient(new Server("localhost", 27017));
-db = mongoclient.db('meatCenter');
-// exports.db = db;
+exports.db = db = mongoclient.db('meatCenter');
+// db;
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 

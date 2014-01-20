@@ -12,7 +12,15 @@ exports.index = function (db) {
 
 // get('/login')
 exports.login = function(req, res){
-  res.send("login");
+  console.log("-------------------------------------------------");
+  console.log("server.db", server.db);
+  console.log("-------------------------------------------------");
+  server.db.collection('posts').findOne({}, function(err, doc) {
+
+    if(err) throw err;
+
+    res.render('home', doc);
+  });
 };
 
 // get('/logout')
