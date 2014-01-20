@@ -3,31 +3,31 @@ var util    = require('util'),
     express = require('express'),
     app     = express(),
     exphbs  = require('express3-handlebars'),
+    hbs,
     // routes
     site    = require('./site'),
     post    = require('./post'),
     admin   = require('./admin');
 
-// console.log(util.inspect(app.use, { showHidden: true, depth: null }));
-/*
-hbs = exphbs.create({
-    defaultLayout: 'main',
-    // helpers      : helpers,
-
-    // Uses multiple partials dirs, templates in "shared/templates/" are shared
-    // with the client-side of the app (see below).
-    partialsDir: [
-        // 'shared/templates/',
-        'views/partials/'
-    ]
-});
-*/
-
 /*
  * App setup
  */
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+
+// based on example set up:
+// https://github.com/ericf/express3-handlebars/blob/master/examples/advanced/app.js
+
+hbs = exphbs.create({
+    defaultLayout: 'main',
+    // helpers      : helpers,
+    partialsDir: [
+        __dirname + '/public/templates/', // not sure about this path set up
+        'views/partials/'
+    ]
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
