@@ -108,6 +108,9 @@ function(req, res){
 /admin/edituser/:id
 */
 
+module.exports.app = app.listen(1337);
+
+/*
 if ( process.execArgv[0] === "--standalone" ) {
   // start in line when we're not running things through grunt
   console.log("standalone");
@@ -116,6 +119,7 @@ if ( process.execArgv[0] === "--standalone" ) {
   // export app so grunt can start the server
   module.exports.app = app;
 }
+*/
 
 console.log("-------------------------------------------------");
 console.log("app.js called");
