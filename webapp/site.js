@@ -19,7 +19,7 @@ exports.assets = function(req, res){
   res.sendfile(__dirname + "/public/" + req.params[0]);
 };
 
-// get('*')
+// get('*') catch all
 exports.notFound = function(req, res){
   res.send('Page Not Found', 404);
 };

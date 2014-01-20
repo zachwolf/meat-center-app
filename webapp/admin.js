@@ -20,20 +20,24 @@ exports.submitNew = function(req, res){
 
 // get('/admin/user/:id')
 exports.user = function(req, res){
+  console.log("user id: ", req.params.id);
   res.send('single user');
 };
 
 // get('/admin/user/:id/edit')
 exports.edit = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('edit user');
 };
 
 // get('/admin/user/:id/update')
 exports.update = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('update user');
 };
 
 // get('/admin/user/:id/delete')
 exports.delete = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('delete user');
 };

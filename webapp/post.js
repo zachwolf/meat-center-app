@@ -15,21 +15,25 @@ exports.submitNew = function(req, res){
 
 // get('/post/:id')
 exports.single = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('single post');
 };
 
 // get('/post/:id/edit')
 exports.edit = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('edit post');
 };
 
 // get('/post/:id/update')
 exports.update = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('update post');
 };
 
 // get('/post/:id/delete')
 exports.delete = function(req, res){
+  console.log("post id: ", req.params.id);
   res.send('delete post');
 };
 
