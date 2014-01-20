@@ -24,7 +24,7 @@ exports.edit = function(req, res){
 };
 
 // get('/post/:id/update')
-exports.delete = function(req, res){
+exports.update = function(req, res){
   res.send('update post');
 };
 
