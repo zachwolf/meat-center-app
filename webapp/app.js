@@ -3,15 +3,28 @@ var util    = require('util'),
     express = require('express'),
     app     = express(),
     exphbs  = require('express3-handlebars'),
-    hbs,
+    MongoDB = require('mongodb'),
     // routes
     site    = require('./site'),
     post    = require('./post'),
-    admin   = require('./admin');
+    admin   = require('./admin'),
+    hbs,
+    MongoClient,
+    mongoclient,
+    db,
+    Server;
 
 /*
  * App setup
  */
+
+// mongodb setup
+MongoClient = MongoDB.MongoClient;
+Server      = MongoDB.Server;
+
+mongoclient = new MongoClient(new Server("localhost", 27017));
+db = mongoclient.db('meatCenter');
+// exports.db = db;
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
 
@@ -48,7 +61,19 @@ function authenticate(req, res, next) {
 
 // general
 
-app.get('/', site.index);
+// app.get('/', site.index);
+
+app.get('/', function(req, res){
+
+    // Find one document in our collection
+    db.collection('posts').findOne({}, function(err, doc) {
+
+        if(err) throw err;
+
+        res.render('home', doc);
+    });
+});
+
 app.get('/login', site.login);
 app.get('/logout', site.logout);
 
@@ -86,8 +111,13 @@ app.get('*', site.notFound);
  * App startup
  */
 
-module.exports.app = app.listen(1337);
+mongoclient.open(function(err, mongoclient) {
 
-console.log("-------------------------------------------------");
-console.log("app.js called");
-console.log("-------------------------------------------------");
+  if(err) throw err;
+
+  app.listen(1337);
+
+  console.log("-------------------------------------------------");
+  console.log("app.js called");
+  console.log("-------------------------------------------------");
+});
