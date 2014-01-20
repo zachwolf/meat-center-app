@@ -55,6 +55,11 @@ function authenticate(req, res, next) {
   next();
 }
 
+function allAuthentication(req, res, next) {
+  console.log("allAuthentication");
+  next();
+}
+
 /*
  * Routing
  */
@@ -67,25 +72,29 @@ app.get('/logout', site.logout);
 
 // posts
 
+app.all('/post/*', allAuthentication);
+
 app.get('/post', authenticate, post.index);
-app.get('/post/new', authenticate, post.createNew);
-app.post('/post/add', authenticate, post.submitNew); // ?
-app.get('/post/:id', authenticate, post.single);
-app.get('/post/:id/edit', authenticate, post.edit);
-app.post('/post/:id/update', authenticate, post.update);
-app.post('/post/:id/delete', authenticate, post.delete);
-app.get('/post/search', authenticate, post.search);
+app.get('/post/new', post.createNew);
+app.post('/post/add', post.submitNew); // ?
+app.get('/post/:id', post.single);
+app.get('/post/:id/edit', post.edit);
+app.post('/post/:id/update', post.update);
+app.post('/post/:id/delete', post.delete);
+app.get('/post/search', post.search);
 
 // admin
 
+app.all('/admin/*', allAuthentication);
+
 app.get('/admin', authenticate, admin.index);
-app.get('/admin/user', authenticate, admin.listUsers);
-app.get('/admin/user/new', authenticate, admin.createNew);
-app.post('/admin/user/add', authenticate, admin.submitNew); // ?
-app.get('/admin/user/:id', authenticate, admin.user);
-app.get('/admin/user/:id/edit', authenticate, admin.edit);
-app.post('/admin/user/:id/update', authenticate, admin.update);
-app.post('/admin/user/:id/delete', authenticate, admin.delete);
+app.get('/admin/user', admin.listUsers);
+app.get('/admin/user/new', admin.createNew);
+app.post('/admin/user/add', admin.submitNew); // ?
+app.get('/admin/user/:id', admin.user);
+app.get('/admin/user/:id/edit', admin.edit);
+app.post('/admin/user/:id/update', admin.update);
+app.post('/admin/user/:id/delete', admin.delete);
 
 // assets
 
