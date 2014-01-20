@@ -61,19 +61,7 @@ function authenticate(req, res, next) {
 
 // general
 
-// app.get('/', site.index);
-
-app.get('/', function(req, res){
-
-    // Find one document in our collection
-    db.collection('posts').findOne({}, function(err, doc) {
-
-        if(err) throw err;
-
-        res.render('home', doc);
-    });
-});
-
+app.get('/', site.index(db));
 app.get('/login', site.login);
 app.get('/logout', site.logout);
 

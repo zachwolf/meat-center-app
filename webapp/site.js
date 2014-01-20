@@ -1,7 +1,13 @@
 // get('/')
-exports.index = function(req, res){
-  // res.render('index', { title: 'Route Separation Example' });
-  res.send('index');
+exports.index = function (db) {
+  return function(req, res){
+    db.collection('posts').findOne({}, function(err, doc) {
+
+      if(err) throw err;
+
+      res.render('home', doc);
+    });
+  };
 };
 
 // get('/login')
