@@ -1,10 +1,15 @@
-
+    // dependencies
 var util    = require('util'),
-		express = require('express'),
+    express = require('express'),
     app     = express(),
-		exphbs  = require('express3-handlebars');
+    exphbs  = require('express3-handlebars'),
+    // routes
+    site    = require('./site'),
+    post    = require('./post'),
+    admin   = require('./admin');
 
 // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+/*
 hbs = exphbs.create({
     defaultLayout: 'main',
     // helpers      : helpers,
@@ -16,6 +21,11 @@ hbs = exphbs.create({
         'views/partials/'
     ]
 });
+*/
+
+/*
+ * App setup
+ */
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -23,30 +33,79 @@ app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 
-app.get('/', function(req, res){
-  res.render('home');
-  // res.sendfile(__dirname + '/public/index.html');
-});
+/*
+ * Routing
+ */
 
-app.get(/^(.+)$/, function(req, res) {
-	res.sendfile(__dirname + "/public/" + req.params[0]);
-});
+// general
 
-// app.get('/user/:id', loadUser, function(req, res){
-//   res.send('Viewing user');
-// });
+app.get('/', site.index);
+app.get('/login', site.login);
+app.get('/logout', site.logout);
 
-app.get('*', function(req, res){
+// posts
+
+app.get('/post', post.index);
+app.get('/post/new', post.createNew);
+app.post('/post/add', post.submitNew); // ?
+app.get('/post/:id', post.single);
+app.get('/post/:id/edit', post.edit);
+app.post('/post/:id/update', post.update);
+app.post('/post/:id/delete', post.delete);
+app.get('/post/search', post.search);
+
+// admin
+
+app.get('/admin', admin.index);
+app.get('/admin/user', admin.listUsers);
+app.get('/admin/user/new', admin.createNew);
+app.post('/admin/user/add', admin.submitNew); // ?
+app.get('/admin/user/:id', admin.user);
+app.get('/admin/user/:id/edit', admin.edit);
+app.post('/admin/user/:id/update', admin.update);
+app.post('/admin/user/:id/delete', admin.delete);
+
+// assets
+
+app.get(/^(.+)$/, site.assets);
+
+// 404
+
+app.get('*', site.notFound);
+
+/*
+assets:
+function(req, res) {
+  res.sendfile(__dirname + "/public/" + req.params[0]);
+}
+not found:
+function(req, res){
     res.send('Page Not Found', 404);
-});
+}*/
+
+
+/*
+/
+/login
+/logout
+/post
+/post/new
+/post/:id
+/post/:id/edit
+/post/:id/delete
+/post/search?[property]=[value]
+/admin
+/admin/newuser
+/admin/edituser/:id
+*/
 
 if ( process.execArgv[0] === "--standalone" ) {
-	// start in line when we're not running things through grunt
-	console.log("standalone");
-	module.exports.app = app.listen(1337);
+  // start in line when we're not running things through grunt
+  console.log("standalone");
+  module.exports.app = app.listen(1337);
 } else {
-	// export app so grunt can start the server
-	module.exports.app = app;
+  // export app so grunt can start the server
+  module.exports.app = app;
 }
 
 console.log("-------------------------------------------------");
