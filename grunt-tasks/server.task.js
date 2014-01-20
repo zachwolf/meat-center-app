@@ -3,6 +3,17 @@ var SETTINGS = require("./globalSettings"),
 
 module.exports = function (grunt) {
 
+  /*
+  if ( process.execArgv[0] === "--standalone" ) {
+    // start in line when we're not running things through grunt
+    console.log("standalone");
+    module.exports.app = app.listen(1337);
+  } else {
+    // export app so grunt can start the server
+    module.exports.app = app;
+  }
+  */
+
   grunt.registerTask('server:start', 'Start a web server', function() {
     console.log('Started web server on port ' + SETTINGS.SERVER_PORT);
     SERVER.listen(SETTINGS.SERVER_PORT);
