@@ -1,9 +1,10 @@
 # Todos
 
 - X remove haml
--- ? implement some sort of HTML partial business (.kit?)
--- implement handlebars
+-- X ? implement some sort of HTML partial business (.kit?)
+-- X implement handlebars
 - keep portions secret from github
+- string sanitization
 
 - set up views
 -- admin
