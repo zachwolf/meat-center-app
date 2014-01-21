@@ -20,18 +20,18 @@ var util    = require('util'),
  */
 
 // mongodb setup
+
 MongoClient = MongoDB.MongoClient;
 Server      = MongoDB.Server;
 
 mongoclient = new MongoClient(new Server("localhost", 27017));
-exports.db = db = mongoclient.db('meatCenter');
-// db;
+db = mongoclient.db('meatCenter');
 
-// console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+
+// handlebars setup
 
 // based on example set up:
 // https://github.com/ericf/express3-handlebars/blob/master/examples/advanced/app.js
-
 hbs = exphbs.create({
     defaultLayout: 'main',
     // helpers      : helpers,
@@ -40,13 +40,17 @@ hbs = exphbs.create({
         'views/partials/'
     ]
 });
-
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-// flash
+
+// flash setup
+
 app.use(express.cookieParser('keyboard cat'));
 app.use(express.session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
+
+// general setup
+
 app.use(express.compress());
 app.use(express.bodyParser());
 app.use(express.static(__dirname + '/public'));
@@ -58,11 +62,6 @@ app.use(express.logger('dev'));
 
 function authenticate(req, res, next) {
   console.log("authenticate");
-  next();
-}
-
-function allAuthentication(req, res, next) {
-  console.log("allAuthentication");
   next();
 }
 
@@ -79,11 +78,11 @@ app.get('/logout', site.logout);
 
 // posts
 
-app.all('/post/*', allAuthentication);
+app.all('/post/*', authenticate);
 
 app.get('/post', authenticate, post.index);
 app.get('/post/new', post.createNew);
-app.post('/post/add', post.submitNew); // ?
+app.post('/post/add', post.submitNew);
 app.get('/post/:id', post.single);
 app.get('/post/:id/edit', post.edit);
 app.post('/post/:id/update', post.update);
@@ -92,12 +91,12 @@ app.get('/post/search', post.search);
 
 // admin
 
-app.all('/admin/*', allAuthentication);
+app.all('/admin/*', authenticate);
 
 app.get('/admin', authenticate, admin.index);
 app.get('/admin/user', admin.listUsers);
 app.get('/admin/user/new', admin.createNew);
-app.post('/admin/user/add', admin.submitNew); // ?
+app.post('/admin/user/add', admin.submitNew);
 app.get('/admin/user/:id', admin.user);
 app.get('/admin/user/:id/edit', admin.edit);
 app.post('/admin/user/:id/update', admin.update);
@@ -107,7 +106,7 @@ app.post('/admin/user/:id/delete', admin.delete);
 
 app.get(/^(.+)$/, site.assets);
 
-// 404
+// errors, 404, ...
 
 app.get('*', site.notFound);
 
@@ -123,5 +122,6 @@ mongoclient.open(function(err, mongoclient) {
 
   console.log("-------------------------------------------------");
   console.log("app.js called");
+  // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
   console.log("-------------------------------------------------");
 });
