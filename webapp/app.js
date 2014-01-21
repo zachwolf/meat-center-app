@@ -4,6 +4,7 @@ var util    = require('util'),
     app     = express(),
     exphbs  = require('express3-handlebars'),
     MongoDB = require('mongodb'),
+    flash   = require('connect-flash'),
     // routes
     site    = require('./site'),
     post    = require('./post'),
@@ -42,7 +43,12 @@ hbs = exphbs.create({
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+// flash
+app.use(express.cookieParser('keyboard cat'));
+app.use(express.session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 app.use(express.compress());
+app.use(express.bodyParser());
 app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 
@@ -68,6 +74,7 @@ function allAuthentication(req, res, next) {
 
 app.get('/', site.index(db));
 app.get('/login', site.login);
+app.post('/login/submit', site.submitlogin(db));
 app.get('/logout', site.logout);
 
 // posts

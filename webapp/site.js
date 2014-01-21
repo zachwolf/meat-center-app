@@ -12,15 +12,48 @@ exports.index = function (db) {
 
 // get('/login')
 exports.login = function(req, res){
-  console.log("-------------------------------------------------");
-  console.log("server.db", server.db);
-  console.log("-------------------------------------------------");
-  server.db.collection('posts').findOne({}, function(err, doc) {
+  console.log("------------------  login  --------------------");
+  console.log("req.param('errors')", req.param('errors'));
+  console.log("------------------ /login  --------------------");
 
-    if(err) throw err;
+  res.render('login', {layout: 'alt', errors: req.flash('errors')});
+  // db.collection('posts').findOne({}, function(err, doc) {
+  //   if(err) throw err;
+  // });
+};
 
-    res.render('home', doc);
-  });
+// get('/login/submit')
+exports.submitlogin = function(db) {
+  return function(req, res, next){
+
+    db.collection('users').findOne({ "email" : req.param('email') }, function(err, doc) {
+
+      if(err) throw err;
+
+      // console.log("------------------  submitlogin  --------------------");
+      // console.log("doc", doc);
+      // console.log("!!doc", !!doc);
+      // console.log("next", next);
+      // console.log(req.param('email'));
+      // console.log(req.param('password'));
+      // console.log("------------------ /submitlogin  --------------------");
+
+      if(!doc) {
+        req.flash('errors', 'Invalid email');
+        return res.redirect('/login');
+      } else {
+        if (doc.password !== req.param('password')) {
+          // forward
+          req.flash('errors', 'Invalid password');
+          return res.redirect('/login');
+        } else {
+          // req.session.loggedIn = true;
+          res.redirect('/post');
+        }
+      }
+
+    });
+  };
 };
 
 // get('/logout')
