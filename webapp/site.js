@@ -12,17 +12,12 @@ exports.index = function (db) {
 
 // get('/login')
 exports.login = function(req, res){
-  console.log("------------------  login  --------------------");
-  console.log("req.param('errors')", req.param('errors'));
-  console.log("------------------ /login  --------------------");
-
-  res.render('login', {layout: 'alt', errors: req.flash('errors')});
-  // db.collection('posts').findOne({}, function(err, doc) {
-  //   if(err) throw err;
-  // });
+  res.render('login', {
+    layout: 'alt', errors: req.flash('errors')
+  });
 };
 
-// get('/login/submit')
+// post('/login/submit')
 exports.submitlogin = function(db) {
   return function(req, res, next){
 

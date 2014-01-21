@@ -33,12 +33,12 @@ db = mongoclient.db('meatCenter');
 // based on example set up:
 // https://github.com/ericf/express3-handlebars/blob/master/examples/advanced/app.js
 hbs = exphbs.create({
-    defaultLayout: 'main',
-    // helpers      : helpers,
-    partialsDir: [
-        __dirname + '/public/templates/', // not sure about this path set up
-        'views/partials/'
-    ]
+  defaultLayout: 'main',
+  // helpers      : helpers,
+  partialsDir: [
+    __dirname + '/public/templates/', // not sure about this path set up
+    'views/partials/'
+  ]
 });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
