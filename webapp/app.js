@@ -48,9 +48,13 @@ app.set('view engine', 'handlebars');
 // session 
 
 app.use(express.cookieParser('keyboard cat'));
-app.use(express.session({ store: new Redis({
-  host: 'localhost', port: 6379
-}), secret: 'keyboard cat' }));
+app.use(express.session({
+    secret: 'keyboard cat',
+    store: new Redis({
+      host: 'localhost', port: 6379
+    })
+  })
+);
 
 // flash setup
 
