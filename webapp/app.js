@@ -57,10 +57,6 @@ app.use(express.bodyParser());
 app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 
-app.use(function(req, res, next){
-  res.locals.user = "inline user!";
-  next();
-});
 
 /*
  * Middleware
@@ -71,7 +67,9 @@ function authenticate(req, res, next) {
     req.flash('referralURL', req.url);
     return res.redirect('/login');
   } else {
-    console.log("authenticated");
+    // expose info to templates
+    res.locals(req.session.user);
+    res.locals({"loggedIn": true});
     next();
   }
 }

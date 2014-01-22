@@ -1,4 +1,8 @@
 <ul>
-	<li><a href="/login">login</a></li>
+	{{#if loggedIn}}
+	<li>{{username}}</li>
 	<li><a href="/logout">logout</a></li>
+	{{else}}
+	<li><a href="/login">login</a></li>
+	{{/if}}
 </ul>
