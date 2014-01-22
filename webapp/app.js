@@ -20,10 +20,6 @@ var util    = require('util'),
  * App setup
  */
 
-console.log("-------------------------------------------------");
-console.log("helpers", helpers);
-console.log("-------------------------------------------------");
-
 // mongodb setup
 
 MongoClient = MongoDB.MongoClient;
