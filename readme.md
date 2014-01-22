@@ -3,6 +3,8 @@
 - X remove haml
 -- X ? implement some sort of HTML partial business (.kit?)
 -- X implement handlebars
+- X handlebar debugger
+- X express locals
 
 - keep portions secret from github
 - string sanitization

@@ -33,6 +33,7 @@ exports.submitlogin = function(db) {
           return res.redirect('/login');
         } else {
           req.session.loggedIn = true;
+          res.locals.email = doc.email;
           res.redirect(req.flash('referralURL')[0] || '/post');
         }
       }
@@ -44,7 +45,8 @@ exports.submitlogin = function(db) {
 // get('/logout')
 exports.logout = function(req, res){
   req.session.loggedIn = false;
-  res.send("logout");
+  req.flash('message', 'Successfully logged out');
+  return res.redirect('/');
 };
 
 // get(/^(.+)$/)

@@ -57,6 +57,11 @@ app.use(express.bodyParser());
 app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 
+app.use(function(req, res, next){
+  res.locals.user = "inline user!";
+  next();
+});
+
 /*
  * Middleware
  */
