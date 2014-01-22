@@ -2,6 +2,7 @@
 var util    = require('util'),
     express = require('express'),
     app     = express(),
+    Redis   = require('connect-redis')(express),
     exphbs  = require('express3-handlebars'),
     helpers = require('./helpers/debug'),
     MongoDB = require('mongodb'),
@@ -44,10 +45,15 @@ hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// flash setup
+// session 
 
 app.use(express.cookieParser('keyboard cat'));
-app.use(express.session({ cookie: { maxAge: 60000 }}));
+app.use(express.session({ store: new Redis({
+  host: 'localhost', port: 6379
+}), secret: 'keyboard cat' }));
+
+// flash setup
+
 app.use(flash());
 
 // general setup
