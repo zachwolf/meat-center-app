@@ -62,6 +62,7 @@ app.use(express.logger('dev'));
 
 function authenticate(req, res, next) {
   if (req.session.loggedIn !== true) {
+    req.flash('referralURL', req.url);
     return res.redirect('/login');
   } else {
     console.log("authenticated");

@@ -1,6 +1,6 @@
 // get('/post')
 exports.index = function(req, res){
-  res.send('all posts');
+  res.render('posts');
 };
 
 // get('/post/new')

@@ -33,7 +33,7 @@ exports.submitlogin = function(db) {
           return res.redirect('/login');
         } else {
           req.session.loggedIn = true;
-          res.redirect('/post');
+          res.redirect(req.flash('referralURL')[0] || '/post');
         }
       }
 

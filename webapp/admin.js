@@ -10,10 +10,10 @@ exports.listUsers = function(req, res){
 
 // get('/admin/user/new')
 exports.createNew = function(req, res){
-  res.send('create user');
+  res.render('admin/newUser');
 };
 
-// get('/admin/user/add')
+// post('/admin/user/add')
 exports.submitNew = function(req, res){
   res.send('add to database');
 };
@@ -30,13 +30,13 @@ exports.edit = function(req, res){
   res.send('edit user');
 };
 
-// get('/admin/user/:id/update')
+// post('/admin/user/:id/update')
 exports.update = function(req, res){
   console.log("post id: ", req.params.id);
   res.send('update user');
 };
 
-// get('/admin/user/:id/delete')
+// post('/admin/user/:id/delete')
 exports.delete = function(req, res){
   console.log("post id: ", req.params.id);
   res.send('delete user');
