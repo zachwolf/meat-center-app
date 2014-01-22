@@ -5,7 +5,7 @@ exports.index = function(req, res){
 
 // get('/post/new')
 exports.createNew = function(req, res){
-  res.send('new post template');
+  res.render('home', {"name": "inline"});
 };
 
 // get('/post/add')
