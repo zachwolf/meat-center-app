@@ -61,8 +61,12 @@ app.use(express.logger('dev'));
  */
 
 function authenticate(req, res, next) {
-  console.log("authenticate");
-  next();
+  if (req.session.loggedIn !== true) {
+    return res.redirect('/login');
+  } else {
+    console.log("authenticated");
+    next();
+  }
 }
 
 /*
@@ -71,7 +75,7 @@ function authenticate(req, res, next) {
 
 // general
 
-app.get('/', site.index(db));
+app.get('/', site.index);
 app.get('/login', site.login);
 app.post('/login/submit', site.submitlogin(db));
 app.get('/logout', site.logout);
@@ -120,8 +124,8 @@ mongoclient.open(function(err, mongoclient) {
 
   app.listen(1337);
 
-  console.log("-------------------------------------------------");
-  console.log("app.js called");
+  // console.log("-------------------------------------------------");
+  // console.log("app.js called");
   // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
-  console.log("-------------------------------------------------");
+  // console.log("-------------------------------------------------");
 });

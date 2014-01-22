@@ -1,19 +1,17 @@
 // get('/')
-exports.index = function (db) {
-  return function(req, res){
-    db.collection('posts').findOne({}, function(err, doc) {
-
-      if(err) throw err;
-
-      res.render('home', doc);
-    });
-  };
+exports.index = function(req, res){
+  if (req.session.loggedIn !== true) { // if not logged in
+    res.render('landing');
+  } else {
+    return res.redirect('/post');
+  }
 };
 
 // get('/login')
 exports.login = function(req, res){
   res.render('login', {
-    layout: 'alt', errors: req.flash('errors')
+    layout : 'alt',
+    errors : req.flash('errors')
   });
 };
 
@@ -25,14 +23,6 @@ exports.submitlogin = function(db) {
 
       if(err) throw err;
 
-      // console.log("------------------  submitlogin  --------------------");
-      // console.log("doc", doc);
-      // console.log("!!doc", !!doc);
-      // console.log("next", next);
-      // console.log(req.param('email'));
-      // console.log(req.param('password'));
-      // console.log("------------------ /submitlogin  --------------------");
-
       if(!doc) {
         req.flash('errors', 'Invalid email');
         return res.redirect('/login');
@@ -42,7 +32,7 @@ exports.submitlogin = function(db) {
           req.flash('errors', 'Invalid password');
           return res.redirect('/login');
         } else {
-          // req.session.loggedIn = true;
+          req.session.loggedIn = true;
           res.redirect('/post');
         }
       }
@@ -53,6 +43,7 @@ exports.submitlogin = function(db) {
 
 // get('/logout')
 exports.logout = function(req, res){
+  req.session.loggedIn = false;
   res.send("logout");
 };
 
