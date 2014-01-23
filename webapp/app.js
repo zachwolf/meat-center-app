@@ -1,5 +1,6 @@
+var config = require('./config'),
     // dependencies
-var util    = require('util'),
+    util    = require('util'),
     express = require('express'),
     app     = express(),
     Redis   = require('connect-redis')(express),

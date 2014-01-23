@@ -5,8 +5,8 @@
 -- X implement handlebars
 - X handlebar debugger
 - X express locals
+- X keep portions secret from github
 
-- keep portions secret from github
 - string sanitization
 - password encryption
 - SSL set up
