@@ -6,8 +6,11 @@
 - X handlebar debugger
 - X express locals
 - X keep portions secret from github
+- X mvc file structure
 
-- mvc file structure
+- grunt cleanup
+-- separate front / back end tasks
+- node testing
 - string sanitization
 - password encryption
 - SSL set up
