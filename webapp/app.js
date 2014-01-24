@@ -46,6 +46,9 @@ hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// files for error pages
+app.set('views', __dirname + '/views');
+
 // session 
 
 app.use(express.cookieParser('keyboard cat'));
@@ -65,8 +68,15 @@ app.use(flash());
 
 app.use(express.compress());
 app.use(express.bodyParser());
+
+// ?
+app.use(express.methodOverride());
+
 app.use(express.static(__dirname + '/public'));
-app.use(express.logger('dev'));
+// app.use(express.logger('dev'));
+// log
+if (!module.parent) app.use(express.logger('dev'));
+
 
 
 /*
@@ -89,38 +99,40 @@ function authenticate(req, res, next) {
  * Routing
  */
 
+require('./lib/boot')(app, { verbose: !module.parent });
+
 // general
 
-app.get('/', site.index);
-app.get('/login', site.login);
-app.post('/login/submit', site.submitlogin(db));
-app.get('/logout', site.logout);
+// app.get('/', site.index);
+// app.get('/login', site.login);
+// app.post('/login/submit', site.submitlogin(db));
+// app.get('/logout', site.logout);
 
-// posts
+// // posts
 
-app.all('/post/*', authenticate);
+// app.all('/post/*', authenticate);
 
-app.get('/post', authenticate, post.index);
-app.get('/post/new', post.createNew);
-app.post('/post/add', post.submitNew);
-app.get('/post/:id', post.single);
-app.get('/post/:id/edit', post.edit);
-app.post('/post/:id/update', post.update);
-app.post('/post/:id/delete', post.delete);
-app.get('/post/search', post.search);
+// app.get('/post', authenticate, post.index);
+// app.get('/post/new', post.createNew);
+// app.post('/post/add', post.submitNew);
+// app.get('/post/:id', post.single);
+// app.get('/post/:id/edit', post.edit);
+// app.post('/post/:id/update', post.update);
+// app.post('/post/:id/delete', post.delete);
+// app.get('/post/search', post.search);
 
-// admin
+// // admin
 
-app.all('/admin/*', authenticate);
+// app.all('/admin/*', authenticate);
 
-app.get('/admin', authenticate, admin.index);
-app.get('/admin/user', admin.listUsers);
-app.get('/admin/user/new', admin.createNew);
-app.post('/admin/user/add', admin.submitNew);
-app.get('/admin/user/:id', admin.user);
-app.get('/admin/user/:id/edit', admin.edit);
-app.post('/admin/user/:id/update', admin.update);
-app.post('/admin/user/:id/delete', admin.delete);
+// app.get('/admin', authenticate, admin.index);
+// app.get('/admin/user', admin.listUsers);
+// app.get('/admin/user/new', admin.createNew);
+// app.post('/admin/user/add', admin.submitNew);
+// app.get('/admin/user/:id', admin.user);
+// app.get('/admin/user/:id/edit', admin.edit);
+// app.post('/admin/user/:id/update', admin.update);
+// app.post('/admin/user/:id/delete', admin.delete);
 
 // assets
 
@@ -128,20 +140,37 @@ app.get(/^(.+)$/, site.assets);
 
 // errors, 404, ...
 
-app.get('*', site.notFound);
+// app.get('*', site.notFound);
+
+app.use(function(err, req, res, next){
+  // treat as 404
+  if (~err.message.indexOf('not found')) return next();
+
+  // log it
+  console.error(err.stack);
+
+  // error page
+  res.status(500).render('5xx');
+});
+
+// assume 404 since no middleware responded
+app.use(function(req, res, next){
+  res.status(404).render('404', { url: req.originalUrl });
+});
 
 /*
  * App startup
  */
 
-mongoclient.open(function(err, mongoclient) {
+if (!module.parent) {
 
-  if(err) throw err;
+  mongoclient.open(function(err, mongoclient) {
 
-  app.listen(1337);
+    if(err) throw err;
 
-  // console.log("-------------------------------------------------");
-  // console.log("app.js called");
-  // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
-  // console.log("-------------------------------------------------");
-});
+    app.listen(1337);
+
+    // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
+  });
+
+}
