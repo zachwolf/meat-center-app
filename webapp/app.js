@@ -136,7 +136,7 @@ require('./lib/boot')(app, { verbose: !module.parent });
 
 // assets
 
-app.get(/^(.+)$/, site.assets);
+// app.get(/^(.+)$/, site.assets);
 
 // errors, 404, ...
 
