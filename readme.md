@@ -7,6 +7,7 @@
 - X express locals
 - X keep portions secret from github
 
+- mvc file structure
 - string sanitization
 - password encryption
 - SSL set up
