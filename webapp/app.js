@@ -103,26 +103,6 @@ function authenticate(req, res, next) {
 
 require('./lib/boot')(app, { verbose: !module.parent });
 
-// general
-
-// app.get('/', site.index);
-// app.get('/login', site.login);
-// app.post('/login/submit', site.submitlogin(db));
-// app.get('/logout', site.logout);
-
-// // posts
-
-// app.all('/post/*', authenticate);
-
-// app.get('/post', authenticate, post.index);
-// app.get('/post/new', post.createNew);
-// app.post('/post/add', post.submitNew);
-// app.get('/post/:id', post.single);
-// app.get('/post/:id/edit', post.edit);
-// app.post('/post/:id/update', post.update);
-// app.post('/post/:id/delete', post.delete);
-// app.get('/post/search', post.search);
-
 // errors, 404, ...
 
 app.use(function(err, req, res, next){
