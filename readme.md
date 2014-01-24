@@ -8,6 +8,7 @@
 - X keep portions secret from github
 - X mvc file structure
 
+- grunt todos
 - grunt cleanup
 -- separate front / back end tasks
 - node testing
