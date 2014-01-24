@@ -14,11 +14,6 @@ module.exports = function(parent, options){
       , method
       , path;
 
-    console.log("------------------  debug  --------------------");
-    console.log("obj", obj);
-    console.log("name", name);
-    console.log("------------------ /debug  --------------------");
-
     // allow specifying the view engine
     if (obj.engine) app.set('view engine', obj.engine);
     app.set('views', __dirname + '/../controllers/' + name + '/views');
