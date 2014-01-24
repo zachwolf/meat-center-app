@@ -45,6 +45,8 @@ hbs = exphbs.create({
 });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+// app.set('view engine', 'html');
+
 
 // files for error pages
 app.set('views', __dirname + '/views');
@@ -121,26 +123,7 @@ require('./lib/boot')(app, { verbose: !module.parent });
 // app.post('/post/:id/delete', post.delete);
 // app.get('/post/search', post.search);
 
-// // admin
-
-// app.all('/admin/*', authenticate);
-
-// app.get('/admin', authenticate, admin.index);
-// app.get('/admin/user', admin.listUsers);
-// app.get('/admin/user/new', admin.createNew);
-// app.post('/admin/user/add', admin.submitNew);
-// app.get('/admin/user/:id', admin.user);
-// app.get('/admin/user/:id/edit', admin.edit);
-// app.post('/admin/user/:id/update', admin.update);
-// app.post('/admin/user/:id/delete', admin.delete);
-
-// assets
-
-// app.get(/^(.+)$/, site.assets);
-
 // errors, 404, ...
-
-// app.get('*', site.notFound);
 
 app.use(function(err, req, res, next){
   // treat as 404
