@@ -5,7 +5,7 @@ var config = require('./config'),
     app     = express(),
     Redis   = require('connect-redis')(express),
     exphbs  = require('express3-handlebars'),
-    helpers = require('./helpers/debug'),
+    helpers = require('./lib/handlebars-helpers'),
     MongoDB = require('mongodb'),
     flash   = require('connect-flash'),
     // routes
