@@ -15,8 +15,11 @@ module.exports = function (grunt) {
   */
 
   grunt.registerTask('server:start', 'Start a web server', function() {
-    console.log('Started web server on port ' + SETTINGS.SERVER_PORT);
-    SERVER.listen(SETTINGS.SERVER_PORT);
+    console.log("-------------------------------------------------");
+    console.log("server:start called");
+    console.log("-------------------------------------------------");
+    /*console.log('Started web server on port ' + SETTINGS.SERVER_PORT);
+    SERVER.listen(SETTINGS.SERVER_PORT);*/
   });
 
 };
