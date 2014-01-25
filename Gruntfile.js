@@ -35,29 +35,6 @@ module.exports = function(grunt) {
         app: 'Google Chrome'
       }
     },
-    copy: {
-      scripts: {
-        files: [
-          {
-            // copy all js and directories except our tests
-            src: [ '**', '!test/**' ],
-            expand: true,
-            cwd: SETTINGS.SCRIPT_SOURCE_PATH + '/',
-            dest: SETTINGS.SCRIPT_BUILD_PATH
-          }
-        ]
-      },
-      markup: {
-        files: [
-          {
-            src: [ '**' ],
-            expand: true,
-            cwd: SETTINGS.MARKUP_SOURCE_PATH + '/',
-            dest: SETTINGS.MARKUP_BUILD_PATH
-          }
-        ]
-      }
-    },
     requirejs: {
       compile: {
         options: {
