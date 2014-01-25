@@ -12,22 +12,6 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js'
       }
     },
-    compass: {
-      dist: {
-        options: {
-          outputStyle: 'compressed',
-          noLineComments: true
-        }
-      },
-      dev: {
-        options: {
-          sassDir : SETTINGS.STYLE_SOURCE_PATH,
-          cssDir  : SETTINGS.STYLE_BUILD_PATH,
-          outputStyle: 'expanded',
-          watch: false
-        }
-      }
-    },
     jshint: {
       dist: {
         options: SETTINGS.JSHINT_DIST_SETTINGS,
@@ -92,5 +76,6 @@ module.exports = function(grunt) {
 
   // load tasks from the grunt tasks dir
   grunt.task.loadTasks(GRUNT_TASKS_PATH);
+  grunt.task.loadTasks(GRUNT_TASKS_PATH + '/asset-tasks');
 
 };

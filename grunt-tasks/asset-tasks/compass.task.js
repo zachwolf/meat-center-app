@@ -3,24 +3,44 @@ var SETTINGS = require("./../settings"),
     createConfig,
     deleteConfig;
 
+createConfig = function () {
+  fs.openSync('./config.rb', 'w');
+};
+
+deleteConfig = function () {
+  fs.unlinkSync('./config.rb');
+};
+
+
 module.exports = function (grunt) {
 
   grunt.registerTask('compass:dev', "build local to :dev settings", function () {
-    console.log("------------------  compass:dev  --------------------");
+    // console.log("------------------  compass:dev  --------------------");
     
     var conf = {};
 
     conf = {
-      sassDir : SETTINGS.STYLE_SOURCE_PATH,
-      cssDir  : SETTINGS.STYLE_BUILD_PATH,
-      outputStyle : 'expanded',
-      watch : false
+      task : {
+        options: {
+          sassDir : SETTINGS.STYLE_SOURCE_PATH,
+          cssDir  : SETTINGS.STYLE_BUILD_PATH,
+          outputStyle : 'expanded',
+          watch : false
+        }
+      }
     };
 
+    // create a config.rb file for compass
+    createConfig();
+
+    // run compass
     grunt.config('compass', conf);
     grunt.task.run("compass");
 
-    console.log("------------------ /compass:dev  --------------------");
+    // delete config.rb file for compass
+    deleteConfig();
+
+    // console.log("------------------ /compass:dev  --------------------");
   });
 
 
