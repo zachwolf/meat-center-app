@@ -8,6 +8,7 @@
 - X keep portions secret from github
 - X mvc file structure
 
+- require -> browserify
 - grunt todos
 - grunt cleanup
 -- separate front / back end tasks
