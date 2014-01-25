@@ -19,7 +19,7 @@ settings.MARKUP_BUILD_PATH = null;
 
 // hint settings
 settings.JSHINT_BASE_SETTINGS = {
-    "bitwise"  : true,
+    "bitwise"  : false,
     "curly"    : true,
     "eqeqeq"   : true,
     "forin"    : true,
@@ -31,7 +31,7 @@ settings.JSHINT_BASE_SETTINGS = {
     "nonew"    : true,
     "plusplus" : true,
     "undef"    : true,
-    "unused"   : true,
+    "unused"   : "vars",
     "strict"   : true,
     "trailing" : true
   };
@@ -60,7 +60,11 @@ settings.JSHINT_DIST_SETTINGS = _.extend({
 
 settings.JSHINT_SERVER_SETTINGS = _.extend({
     "globals" : {
-      "require" : true
+      "__dirname" : true,
+      "exports"   : true,
+      "require"   : true,
+      "console"   : true,
+      "module"    : true
     }
   }, settings.JSHINT_BASE_SETTINGS);
 

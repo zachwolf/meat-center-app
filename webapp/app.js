@@ -1,17 +1,15 @@
-var config = require('./config'),
     // dependencies
-    util    = require('util'),
-    express = require('express'),
+var express = require('express'),
     app     = express(),
     Redis   = require('connect-redis')(express),
     exphbs  = require('express3-handlebars'),
     helpers = require('./lib/handlebars-helpers'),
     MongoDB = require('mongodb'),
     flash   = require('connect-flash'),
-    // routes
-    site    = require('./site'),
-    post    = require('./post'),
-    admin   = require('./admin'),
+    /* jshint ignore:start */
+    config  = require('./config'),
+    util    = require('util'),
+    /* jshint ignore:end */
     hbs,
     MongoClient,
     mongoclient,
@@ -75,9 +73,11 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 
 app.use(express.static(__dirname + '/public/build'));
-// app.use(express.logger('dev'));
+
 // log
-if (!module.parent) app.use(express.logger('dev'));
+if (!module.parent) {
+  app.use(express.logger('dev'));
+}
 
 
 
@@ -85,17 +85,20 @@ if (!module.parent) app.use(express.logger('dev'));
  * Middleware
  */
 
-function authenticate(req, res, next) {
-  if (req.session.loggedIn !== true) {
-    req.flash('referralURL', req.url);
-    return res.redirect('/login');
-  } else {
-    // expose info to templates
-    res.locals(req.session.user);
-    res.locals({"loggedIn": true});
-    next();
-  }
-}
+// function authenticate(req, res, next) {
+
+//   "use strict";
+
+//   if (req.session.loggedIn !== true) {
+//     req.flash('referralURL', req.url);
+//     return res.redirect('/login');
+//   } else {
+//     // expose info to templates
+//     res.locals(req.session.user);
+//     res.locals({"loggedIn": true});
+//     next();
+//   }
+// }
 
 /*
  * Routing
@@ -106,8 +109,13 @@ require('./lib/boot')(app, { verbose: !module.parent });
 // errors, 404, ...
 
 app.use(function(err, req, res, next){
+
+  "use strict";
+
   // treat as 404
-  if (~err.message.indexOf('not found')) return next();
+  if (~err.message.indexOf('not found')) {
+    return next();
+  }
 
   // log it
   console.error(err.stack);
@@ -118,6 +126,9 @@ app.use(function(err, req, res, next){
 
 // assume 404 since no middleware responded
 app.use(function(req, res, next){
+
+  "use strict";
+
   res.status(404).render('404', { url: req.originalUrl });
 });
 
@@ -129,7 +140,11 @@ if (!module.parent) {
 
   mongoclient.open(function(err, mongoclient) {
 
-    if(err) throw err;
+    "use strict";
+
+    if(err) {
+      throw err;
+    }
 
     app.listen(1337);
 

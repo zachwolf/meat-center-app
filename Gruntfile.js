@@ -12,23 +12,6 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js'
       }
     },
-    jshint: {
-      dist: {
-        options: SETTINGS.JSHINT_DIST_SETTINGS,
-        files: {
-          src: [ SETTINGS.SCRIPT_SOURCE_PATH + '/*.js', SETTINGS.SCRIPT_SOURCE_PATH + '/**/*.js',
-                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/lib/*.js',
-                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/test/*.js']
-        }
-      },
-      dev: {
-        options: SETTINGS.JSHINT_DEV_SETTINGS,
-        files: {
-          src: [ SETTINGS.SCRIPT_SOURCE_PATH + '/*.js', SETTINGS.SCRIPT_SOURCE_PATH + '/**/*.js',
-                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/lib/*.js']
-        }
-      }
-    },
     open : {
       local : {
         path: 'http://localhost:' + SETTINGS.SERVER_PORT,
@@ -53,5 +36,6 @@ module.exports = function(grunt) {
   // load tasks from the grunt tasks dir
   grunt.task.loadTasks(GRUNT_TASKS_PATH);
   grunt.task.loadTasks(GRUNT_TASKS_PATH + '/asset-tasks');
+  grunt.task.loadTasks(GRUNT_TASKS_PATH + '/server-tasks');
 
 };

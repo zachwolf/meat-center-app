@@ -29,14 +29,23 @@ exports.name = "user";
 exports.prefix = '/admin';
 
 exports.index = function(req, res){
+
+  "use strict";
+
   res.render('landing');
 };
 
 exports.list = function(req, res, next){
+
+  "use strict";
+
   res.render('landing');
 };
 
 exports.show = function(req, res, next){
+
+  "use strict";
+
   res.render('landing', { user: req.user });
 };
 

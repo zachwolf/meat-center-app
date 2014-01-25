@@ -1,5 +1,8 @@
 
 exports.index = function(req, res){
+
+  "use strict";
+
   res.render('landing');
 };
 

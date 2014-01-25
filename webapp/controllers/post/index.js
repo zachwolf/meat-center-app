@@ -1,4 +1,7 @@
 exports.list = function(req, res, next){
+
+  "use strict";
+
   res.render('list');
 };
 
