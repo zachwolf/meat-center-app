@@ -67,8 +67,7 @@ module.exports = function(grunt) {
           out: SETTINGS.SCRIPT_BUILD_PATH + "/app.js"
         }
       }
-    },
-    clean: [ SETTINGS.BUILD_PATH ]
+    }
   });
 
   // load all required grunt tasks dependencies
