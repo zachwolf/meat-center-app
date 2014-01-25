@@ -88,16 +88,3 @@ X   app.delete('/admin/user/:id/delete', admin.delete);
     GET /admin/user/:user_id/edit -> edit
     GET /admin/user/:user_id/delete -> delete
 */
-
-
-
-/*
-
-
-// app.get('/', site.index);
-// app.get('/login', site.login);
-// app.post('/login/submit', site.submitlogin(db));
-// app.get('/logout', site.logout);
-
-
-*/
