@@ -1,4 +1,4 @@
-var SETTINGS = require("./globalSettings");
+var SETTINGS = require("./settings");
 
 module.exports = function (grunt) {
 

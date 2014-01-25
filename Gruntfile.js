@@ -1,6 +1,6 @@
 // task settings
 var GRUNT_TASKS_PATH  = "./grunt-tasks",
-    SETTINGS = require( GRUNT_TASKS_PATH + "/globalSettings" );
+    SETTINGS = require( GRUNT_TASKS_PATH + "/settings" );
 
 module.exports = function(grunt) {
 

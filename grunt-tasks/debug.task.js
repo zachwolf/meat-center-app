@@ -1,5 +1,5 @@
 var util     = require('util'),
-		SETTINGS = require("./globalSettings");
+		SETTINGS = require("./settings");
 
 module.exports = function (grunt) {
 
