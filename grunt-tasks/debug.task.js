@@ -18,23 +18,11 @@ module.exports = function (grunt) {
       fs.unlinkSync('./test.txt');
       console.log('successfully deleted test.txt');
       done();
-      
+
     }, 2000);
 
     console.log("hi");
     console.log("-------------------------------------------------");
   });
-
-  grunt.registerTask('asyncfoo', 'My "asyncfoo" task.', function() {
-  // Force task into async mode and grab a handle to the "done" function.
-  var done = this.async();
-  // Run some sync stuff.
-  grunt.log.writeln('Processing task...');
-  // And some async stuff.
-  setTimeout(function() {
-    grunt.log.writeln('All done!');
-    done();
-  }, 1000);
-});
 
 };
