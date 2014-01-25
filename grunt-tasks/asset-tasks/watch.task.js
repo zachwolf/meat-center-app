@@ -1,4 +1,4 @@
-var SETTINGS = require("./settings");
+var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
