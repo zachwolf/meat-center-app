@@ -1,5 +1,5 @@
-var SETTINGS = require("./settings"),
-    SERVER   = require("../" + SETTINGS.SERVER_PATH + '/app.js').app;
+// var SETTINGS = require("./settings"),
+    // SERVER   = require("../" + SETTINGS.SERVER_PATH + '/app.js').app;
 
 module.exports = function (grunt) {
 
