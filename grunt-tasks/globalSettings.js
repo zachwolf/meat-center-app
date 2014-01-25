@@ -6,16 +6,16 @@ settings.SERVER_PORT = 1337; // 2 cool
 settings.SERVER_PATH = "./webapp";
 
 // source settings
-settings.SOURCE_PATH = "./source";
-settings.STYLE_SOURCE_PATH  = settings.SOURCE_PATH + "/style";
-settings.SCRIPT_SOURCE_PATH = settings.SOURCE_PATH + "/js";
-settings.MARKUP_SOURCE_PATH = settings.SOURCE_PATH + "/markup";
+settings.SOURCE_PATH = "./webapp/public/source";
+settings.STYLE_SOURCE_PATH  = settings.SOURCE_PATH + "/styles";
+settings.SCRIPT_SOURCE_PATH = settings.SOURCE_PATH + "/scripts";
+settings.MARKUP_SOURCE_PATH = null;
 
 // build settings
-settings.BUILD_PATH        = settings.SERVER_PATH + "/public";
-settings.STYLE_BUILD_PATH  = settings.BUILD_PATH  + "/style";
-settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH  + "/js";
-// settings.MARKUP_BUILD_PATH = settings.SERVER_PATH + "/views";
+settings.BUILD_PATH        = "./webapp/public/build";
+settings.STYLE_BUILD_PATH  = settings.BUILD_PATH  + "/styles";
+settings.SCRIPT_BUILD_PATH = settings.BUILD_PATH  + "/scripts";
+settings.MARKUP_BUILD_PATH = null;
 
 // hint settings
 settings.JSHINT_BASE_SETTINGS = {
