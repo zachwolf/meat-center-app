@@ -39,7 +39,7 @@ hbs = exphbs.create({
   defaultLayout : 'main',
   helpers : helpers,
   partialsDir : [
-    __dirname + '/public/templates/', // not sure about this path set up
+    // __dirname + '/public/templates/', // not sure about this path set up
     'views/partials/'
   ]
 });
@@ -74,7 +74,7 @@ app.use(express.bodyParser());
 // ?
 app.use(express.methodOverride());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/build'));
 // app.use(express.logger('dev'));
 // log
 if (!module.parent) app.use(express.logger('dev'));

@@ -19,4 +19,29 @@
 
 ***
 
+app structue:
+
+webapp/
+	app.js
+	config.js
+	tests/
+	controllers/
+		test/
+			views/
+		...
+	views/
+		404
+		5xx
+	public/
+		source/
+			scripts/
+				tests/
+			styles/
+
+		build/
+			js/
+			css/
+
+***
+
 Generated with the help of [Starter](https://github.com/zachwolf/Starter).
