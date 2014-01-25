@@ -36,14 +36,6 @@ settings.JSHINT_BASE_SETTINGS = {
     "trailing" : true
   };
 
-settings.JSHINT_DIST_SETTINGS = _.extend({
-    "globals" : {
-      "requirejs" : true,
-      "define"    : true,
-      "window"    : true
-    }
-  }, settings.JSHINT_BASE_SETTINGS);
-
 settings.JSHINT_DEV_SETTINGS = _.extend({
     "debug"   : true,
     "globals" : {
@@ -55,6 +47,20 @@ settings.JSHINT_DEV_SETTINGS = _.extend({
       "window"    : true,
       "alert"     : true,
       "it"        : true
+    }
+  }, settings.JSHINT_BASE_SETTINGS);
+
+settings.JSHINT_DIST_SETTINGS = _.extend({
+    "globals" : {
+      "requirejs" : true,
+      "define"    : true,
+      "window"    : true
+    }
+  }, settings.JSHINT_BASE_SETTINGS);
+
+settings.JSHINT_SERVER_SETTINGS = _.extend({
+    "globals" : {
+      "require" : true
     }
   }, settings.JSHINT_BASE_SETTINGS);
 
