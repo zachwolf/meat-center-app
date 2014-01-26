@@ -7,7 +7,7 @@ for (var file in window.__karma__.files) {
 
 requirejs.config({
     // Karma serves files from '/base'
-    baseUrl: '/base/webapp/public/source/scripts/src',
+    baseUrl: '/base/scripts/src',
 
     paths: {
         'jquery': '../lib/jquery',

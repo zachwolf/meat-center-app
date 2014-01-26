@@ -9,7 +9,7 @@ module.exports = function(config) {
   config.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: '',
+    basePath: 'webapp/public/source',
 
 
     // frameworks to use
@@ -18,17 +18,21 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/lib/**/*.js', included: false},
-        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/**/*.js', included: false},
-        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/test/**/*Spec.js', included: false},
-
-        SETTINGS.SCRIPT_SOURCE_PATH + '/test/test-main.js',
+        // SETTINGS.SCRIPT_SOURCE_PATH + '/test/test-main.js',
+      {pattern: 'scripts/test/*Spec.js', included: false},
+      {pattern: 'scripts/lib/*.js', included: false, served: true},
+      {pattern: 'scripts/src/*.js', included: false, served: true},
+        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/*.js', included: false},
+        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/**/*.js', included: false},
+        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/test/**/*Spec.js', included: false}
+      'scripts/test/test-main.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-        SETTINGS.SCRIPT_SOURCE_PATH + '/src/main.js'
+
+        // SETTINGS.SCRIPT_SOURCE_PATH + '/src/main.js'
     ],
 
 
@@ -41,11 +45,20 @@ module.exports = function(config) {
     // source files, that you wanna generate coverage for
     // do not include tests or libraries
     // (these files will be instrumented by Istanbul)
-    preprocessors: preprocessors,
+    // preprocessors: preprocessors,
+    preprocessors: {
+      '**/scripts/src/*.js': 'coverage'
+
+      // '**/webapp/public/source/scripts/src/*.js': 'coverage'
+    },
 
     coverageReporter : {
-      type : 'text',
-      dir  : SETTINGS.SCRIPT_SOURCE_PATH + '/test/coverage'
+      dir  : 'scripts/test/coverage',
+      reporters: [{
+        type: 'html'
+      }, {
+        type: 'text'
+      }]
     },
 
     // web server port
@@ -73,7 +86,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS', 'Chrome', 'Firefox', 'Safari'],
+    browsers: ['PhantomJS', 'Chrome'],
 
 
     // If browser does not capture in given timeout [ms], kill it

@@ -11,7 +11,9 @@ requirejs.config({
     }
 });
 
-define(['app', 'jquery'], function (App, $) {
+define(['app', 'jquery', 'rap'], function (App, $, Rap) {
     var app = new App($('body'));
+    var rap = new Rap($('body'));
     app.render();
+    rap.render();
 });
