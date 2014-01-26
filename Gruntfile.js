@@ -1,6 +1,5 @@
 // task settings
-var GRUNT_TASKS_PATH  = "./grunt-tasks",
-    SETTINGS = require( GRUNT_TASKS_PATH + "/settings" );
+var SETTINGS = require( "./grunt-tasks/settings" );
 
 module.exports = function(grunt) {
 
@@ -34,8 +33,8 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   // load tasks from the grunt tasks dir
-  grunt.task.loadTasks(GRUNT_TASKS_PATH);
-  grunt.task.loadTasks(GRUNT_TASKS_PATH + '/asset-tasks');
-  grunt.task.loadTasks(GRUNT_TASKS_PATH + '/server-tasks');
+  grunt.task.loadTasks(SETTINGS.GRUNT_TASKS_PATH);
+  grunt.task.loadTasks(SETTINGS.GRUNT_TASKS_PATH + '/asset-tasks');
+  grunt.task.loadTasks(SETTINGS.GRUNT_TASKS_PATH + '/server-tasks');
 
 };

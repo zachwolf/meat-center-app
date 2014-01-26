@@ -1,6 +1,9 @@
 var _ = require('underscore'),
     settings = {};
 
+// Grunt settings
+settings.GRUNT_TASKS_PATH  = "./grunt-tasks";
+
 // Localhost settings
 settings.SERVER_PORT = 1337; // 2 cool
 settings.SERVER_PATH = "./webapp";
