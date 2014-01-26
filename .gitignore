@@ -1,3 +1,5 @@
 
 node_modules/
 *.scssc
+
+webapp/public/source/scripts/test/coverage/*.json

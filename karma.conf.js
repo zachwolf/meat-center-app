@@ -1,11 +1,16 @@
-// Karma configuration
-// Generated on Tue Dec 31 2013 22:30:58 GMT-0600 (CST)
+var SETTINGS = require('./grunt-tasks/settings');
 
 module.exports = function(config) {
+
+  // so we can have dynamic file paths
+  var preprocessors = {};
+  preprocessors[SETTINGS.SCRIPT_SOURCE_PATH + '/src/*.js'] = ['coverage'];
+
   config.set({
 
     // base path, that will be used to resolve files and exclude
     basePath: '',
+
 
     // frameworks to use
     frameworks: ['jasmine', 'requirejs'],
@@ -13,24 +18,35 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'source/js/test/test-main.js',
-      {pattern: 'source/js/*.js', included: false},
-      {pattern: 'source/js/**/*.js', included: false},
-      {pattern: 'source/js/test/*Spec.js', included: false},
-      {pattern: 'source/js/test/**/*Spec.js', included: false}
+        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/lib/**/*.js', included: false},
+        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/**/*.js', included: false},
+        {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/test/**/*Spec.js', included: false},
+
+        SETTINGS.SCRIPT_SOURCE_PATH + '/test/test-main.js',
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+        SETTINGS.SCRIPT_SOURCE_PATH + '/src/main.js'
     ],
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
+
+    // karma coverage
+    // source files, that you wanna generate coverage for
+    // do not include tests or libraries
+    // (these files will be instrumented by Istanbul)
+    preprocessors: preprocessors,
+
+    coverageReporter : {
+      type : 'text',
+      dir  : SETTINGS.SCRIPT_SOURCE_PATH + '/test/coverage'
+    },
 
     // web server port
     port: 9876,
@@ -42,7 +58,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -53,12 +69,11 @@ module.exports = function(config) {
     // - Chrome
     // - ChromeCanary
     // - Firefox
-    // - Opera (has to be installed with `npm install karma-opera-launcher`)
-    // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
+    // - Opera
+    // - Safari (only Mac)
     // - PhantomJS
-    // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-    // browsers: ['Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera'],
-    browsers: ['PhantomJS'],
+    // - IE (only Windows)
+    browsers: ['PhantomJS', 'Chrome', 'Firefox', 'Safari'],
 
 
     // If browser does not capture in given timeout [ms], kill it
