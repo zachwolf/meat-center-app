@@ -2,14 +2,11 @@ var SETTINGS = require('./grunt-tasks/settings');
 
 module.exports = function(config) {
 
-  // so we can have dynamic file paths
-  var preprocessors = {};
-  preprocessors[SETTINGS.SCRIPT_SOURCE_PATH + '/src/*.js'] = ['coverage'];
-
   config.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: 'webapp/public/source',
+    // basePath: './webapp/public/source',
+    basePath: SETTINGS.SOURCE_PATH,
 
 
     // frameworks to use
@@ -18,21 +15,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        // SETTINGS.SCRIPT_SOURCE_PATH + '/test/test-main.js',
+      // SETTINGS.SCRIPT_SOURCE_PATH + '/test/test-main.js',
+      // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/*.js', included: false},
+      // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/**/*.js', included: false},
+      // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/test/**/*Spec.js', included: false}
       {pattern: 'scripts/test/*Spec.js', included: false},
       {pattern: 'scripts/lib/*.js', included: false, served: true},
       {pattern: 'scripts/src/*.js', included: false, served: true},
-        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/*.js', included: false},
-        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/src/**/*.js', included: false},
-        // {pattern: SETTINGS.SCRIPT_SOURCE_PATH + '/test/**/*Spec.js', included: false}
       'scripts/test/test-main.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-
-        // SETTINGS.SCRIPT_SOURCE_PATH + '/src/main.js'
+      // 'scripts/src/main.js'
     ],
 
 
@@ -47,11 +43,12 @@ module.exports = function(config) {
     // (these files will be instrumented by Istanbul)
     // preprocessors: preprocessors,
     preprocessors: {
-      '**/scripts/src/*.js': 'coverage'
-
       // '**/webapp/public/source/scripts/src/*.js': 'coverage'
+      '**/scripts/src/*.js': 'coverage'
     },
 
+
+    // karma coverage setup
     coverageReporter : {
       dir  : 'scripts/test/coverage',
       reporters: [{
@@ -86,7 +83,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS', 'Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // If browser does not capture in given timeout [ms], kill it
