@@ -7,9 +7,9 @@
 - X express locals
 - X keep portions secret from github
 - X mvc file structure
+- X grunt todos
 
 - require -> browserify
-- grunt todos
 - grunt cleanup
 -- separate front / back end tasks
 - node testing
