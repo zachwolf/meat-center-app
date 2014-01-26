@@ -47,6 +47,6 @@
     "connect-flash": "~0.1.1",
     "connect-redis": "~1.4.6",
     "pwd": "0.0.3",
-    "grunt-todo": "~0.1.1"
+    "grunt-todo": "~0.1.2"
   }
 }
