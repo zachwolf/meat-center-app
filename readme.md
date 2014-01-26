@@ -5,9 +5,9 @@
 -- [X] implement handlebars
 - [X] handlebar debugger
 - [X] express locals
-- [x] keep portions secret from github
-- [x] mvc file structure
-- [x] grunt todos
+- [X] keep portions secret from github
+- [X] mvc file structure
+- [X] grunt todos
 
 - [ ] require -> browserify
 - [ ] grunt cleanup
