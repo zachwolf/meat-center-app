@@ -1,4 +1,4 @@
-# Todos
+## Todos
 
 - X remove haml
 -- X ? implement some sort of HTML partial business (.kit?)
@@ -16,31 +16,6 @@
 - string sanitization
 - password encryption
 - SSL set up
-
-***
-
-app structue:
-
-webapp/
-	app.js
-	config.js
-	tests/
-	controllers/
-		test/
-			views/
-		...
-	views/
-		404
-		5xx
-	public/
-		source/
-			scripts/
-				tests/
-			styles/
-
-		build/
-			js/
-			css/
 
 ***
 
