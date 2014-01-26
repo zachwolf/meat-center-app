@@ -5,12 +5,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    karma: {
-      unit: {
-        singleRun: true,
-        configFile: 'karma.conf.js'
-      }
-    },
     open : {
       local : {
         path: 'http://localhost:' + SETTINGS.SERVER_PORT,

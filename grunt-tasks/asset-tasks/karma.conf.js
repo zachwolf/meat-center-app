@@ -1,4 +1,4 @@
-var SETTINGS = require('./grunt-tasks/settings');
+var SETTINGS = require('../settings');
 
 module.exports = function(config) {
 
@@ -6,7 +6,7 @@ module.exports = function(config) {
 
     // base path, that will be used to resolve files and exclude
     // basePath: './webapp/public/source',
-    basePath: SETTINGS.SOURCE_PATH,
+    basePath: "../../" + SETTINGS.SOURCE_PATH,
 
 
     // frameworks to use
