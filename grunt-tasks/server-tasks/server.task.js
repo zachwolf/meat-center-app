@@ -1,3 +1,6 @@
+// todo: start node server from grunt
+// todo? nodemon
+
 // var SETTINGS = require("./settings"),
     // SERVER   = require("../" + SETTINGS.SERVER_PATH + '/app.js').app;
 

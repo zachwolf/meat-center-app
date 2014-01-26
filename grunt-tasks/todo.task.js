@@ -14,6 +14,11 @@ module.exports = function(grunt) {
               name: "to do:",
               pattern: /todo\:\s/,
               color: "yellow"
+            },
+            {
+              name: "might do:",
+              pattern: /todo\?\s/,
+              color: "cyan"
             }
           ]
         },
