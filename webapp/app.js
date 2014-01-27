@@ -16,6 +16,8 @@ var express = require('express'),
     db,
     Server;
 
+console.log("app.js loaded");
+
 /*
  * App setup
  */
@@ -146,9 +148,13 @@ if (!module.parent) {
       throw err;
     }
 
+    console.log("app started on 1337");
+
     app.listen(1337);
 
     // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
   });
 
 }
+
+return "hello";
