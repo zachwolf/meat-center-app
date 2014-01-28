@@ -7,12 +7,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    open : {
-      local : {
-        path: 'http://localhost:' + SETTINGS.SERVER_PORT,
-        app: 'Google Chrome'
-      }
-    },
     // todo? remove require build
     requirejs: {
       compile: {
