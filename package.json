@@ -50,6 +50,7 @@
     "grunt-todo": "~0.1.2",
     "karma-coverage": "~0.1",
     "phantomjs": "1.9.x",
-    "grunt-nodemon": "~0.2.0"
+    "grunt-nodemon": "~0.2.0",
+    "grunt-concurrent": "~0.4.3"
   }
 }
