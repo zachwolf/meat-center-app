@@ -1,3 +1,5 @@
+// todo: jshint single or double quotes?
+
 var _ = require('underscore'),
     settings = {};
 
