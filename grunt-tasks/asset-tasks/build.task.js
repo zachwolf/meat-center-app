@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     grunt.task.run('clean:scripts');
     grunt.task.run('jshint:dev');
     grunt.task.run('karma:unit');
+    // todo: add browserify
     // grunt.task.run('browserify:unit');
 
     // notes
