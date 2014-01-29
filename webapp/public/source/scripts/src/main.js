@@ -12,6 +12,9 @@ requirejs.config({
 });
 
 define(['app', 'jquery', 'rap'], function (App, $, Rap) {
+
+    "use strict";
+
     var app = new App($('body'));
     var rap = new Rap($('body'));
     app.render();

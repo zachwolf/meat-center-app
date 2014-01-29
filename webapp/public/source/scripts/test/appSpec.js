@@ -1,5 +1,7 @@
 define(['app', 'jquery', 'underscore'], function(App, $, _) {
 
+    "use strict";
+
     describe('just checking', function() {
 
         it('works for app', function() {

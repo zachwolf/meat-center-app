@@ -1,13 +1,15 @@
 define(function() {
 
-		var z,
-				test = function(x, y) {
-					z = x + y;
-					return z;
-				};
+    "use strict";
+    
+        var z,
+                test = function(x, y) {
+                    z = x + y;
+                    return z;
+                };
 
     var App = function(el) {
-    	test(1,2);
+        test(1,2);
         this.el = el;
     };
 
