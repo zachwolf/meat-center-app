@@ -11,7 +11,8 @@ module.exports = function (grunt) {
         options: SETTINGS.JSHINT_DEV_SETTINGS,
         files: {
           src: [ SETTINGS.SCRIPT_SOURCE_PATH + '/*.js', SETTINGS.SCRIPT_SOURCE_PATH + '/**/*.js',
-                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/lib/*.js']
+                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/lib/*.js',
+                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/test/coverage/**/*.js']
         }
       }
     };
@@ -31,7 +32,8 @@ module.exports = function (grunt) {
         files: {
           src: [ SETTINGS.SCRIPT_SOURCE_PATH + '/*.js', SETTINGS.SCRIPT_SOURCE_PATH + '/**/*.js',
                  "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/lib/*.js',
-                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/test/*.js']
+                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/test/*.js',
+                 "!" + SETTINGS.SCRIPT_SOURCE_PATH + '/test/coverage/**/*.js']
         }
       }
     };
