@@ -2,7 +2,9 @@ var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('karma:unit', "karma unit testing for browser js", function () {
+  grunt.task.renameTask("karma", "_karma");
+
+  grunt.registerTask('karma', "karma unit testing for browser js", function () {
     
     var conf = {};
 
@@ -15,8 +17,8 @@ module.exports = function (grunt) {
       }
     };
 
-    grunt.config('karma', conf);
-    grunt.task.run("karma");
+    grunt.config('_karma', conf);
+    grunt.task.run("_karma");
 
   });
 
