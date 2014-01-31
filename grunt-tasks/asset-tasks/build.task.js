@@ -18,22 +18,25 @@ module.exports = function (grunt) {
 
     // notes
     grunt.task.run('todos');
-    /*
-    */
   });
 
   grunt.registerTask('build:dist', "build minified assests for production", function () {
     console.log("-------------------------------------------------");
     console.log("build:dist called");
     console.log("-------------------------------------------------");
-    /*
-    grunt.task.run("clean");
+    // style tasks
+    grunt.task.run('clean:styles');
     grunt.task.run('compass:dist');
+    
+    // script tasks
+    grunt.task.run('clean:scripts');
     grunt.task.run('jshint:dist');
     grunt.task.run('karma:unit');
-    grunt.task.run('requirejs:compile');
-    grunt.task.run('copy:markup');
-    */
+    grunt.task.run('browserify');
+    grunt.task.run('uglify');
+
+    // notes
+    grunt.task.run('todos');
   });
 
 };
