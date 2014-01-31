@@ -1,19 +1,23 @@
+// todo? grunt prompt
+
 var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('watch:dev', "watch and build local to :dev settings", function () {
+  grunt.task.renameTask("watch", "_watch");
+
+  grunt.registerTask('watch', "Compile code on change", function () {
 
     var conf = {};
 
-    console.log("watch:dev called");
+    console.log("watch called");
 
     // clean out and recompile all of BUILD_PATH
-    grunt.task.run("build:dev");
+    // grunt.task.run("build");
 
     // start a local server
     // grunt.task.run("server:start");
-    grunt.task.run("open:local");
+    // grunt.task.run("open:local");
 
     conf = {
       // reload the page when things change
@@ -36,24 +40,25 @@ module.exports = function (grunt) {
         ],
         tasks: [
           'jshint:dev',
-          'karma:unit',
+          'karma',
           'copy:scripts'
         ]
-      },
-      // compile html business
-      markup: {
-        files: [
-          SETTINGS.MARKUP_SOURCE_PATH + '/*.handlebars',
-          SETTINGS.MARKUP_SOURCE_PATH + '/**/*.handlebars'
-        ],
-        tasks: [
-          'copy:markup'
-        ]
       }
+      // ,
+      // // compile html business
+      // markup: {
+      //   files: [
+      //     SETTINGS.MARKUP_SOURCE_PATH + '/*.handlebars',
+      //     SETTINGS.MARKUP_SOURCE_PATH + '/**/*.handlebars'
+      //   ],
+      //   tasks: [
+      //     'copy:markup'
+      //   ]
+      // }
     };
 
-    grunt.config('watch', conf);
-    grunt.task.run("watch");
+    grunt.config('_watch', conf);
+    grunt.task.run("_watch");
 
   });
 
@@ -91,7 +96,7 @@ module.exports = function (grunt) {
   //       ],
   //       tasks: [
   //         'jshint:dist',
-  //         'karma:unit',
+  //         'karma',
   //         'requirejs:compile'
   //       ]
   //     },
