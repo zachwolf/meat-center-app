@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     // script tasks
     grunt.task.run('clean:scripts');
     grunt.task.run('jshint:dev');
-    grunt.task.run('karma:unit');
+    grunt.task.run('karma');
     grunt.task.run('browserify');
 
     // notes
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     // script tasks
     grunt.task.run('clean:scripts');
     grunt.task.run('jshint:dist');
-    grunt.task.run('karma:unit');
+    grunt.task.run('karma');
     grunt.task.run('browserify');
     grunt.task.run('uglify');
 
