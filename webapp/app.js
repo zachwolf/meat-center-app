@@ -10,6 +10,7 @@ var express = require('express'),
     config  = require('./config'),
     util    = require('util'),
     /* jshint ignore:end */
+    PORT    = 1337,
     hbs,
     MongoClient,
     mongoclient,
@@ -148,9 +149,11 @@ if (!module.parent) {
       throw err;
     }
 
-    console.log("app started on 1337");
+    console.log("-------------------------------------------------");
+    console.log("app started on " + PORT);
+    console.log("-------------------------------------------------");
 
-    app.listen(1337);
+    app.listen(PORT);
 
     // console.log(util.inspect(app.use, { showHidden: true, depth: null }));
   });
