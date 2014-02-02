@@ -1,3 +1,5 @@
+// todo? copy source/scripts/lib
+
 var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
