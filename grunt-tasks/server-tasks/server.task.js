@@ -17,6 +17,7 @@ module.exports = function (grunt) {
           // omit this property if you aren't serving HTML files and 
           // don't want to open a browser tab on start
           callback: function (nodemon) {
+            /*
             nodemon.on('log', function (event) {
               console.log("------------------  nodemon log  --------------------");
               console.log(arguments);
@@ -39,14 +40,13 @@ module.exports = function (grunt) {
             nodemon.on('restart', function () {
               console.log("------------------  nodemon restart  --------------------");
               console.log(arguments);
-              // grunt.task.run('jshint:server');
-              // grunt.task.run('test:server');
               console.log("------------------ /nodemon restart  --------------------");
               // Delay before server listens on port
               // setTimeout(function() {
               //   require('fs').writeFileSync('.grunt/rebooted', 'rebooted');
               // }, 1000);
             });
+            */
           }
         }
       }
