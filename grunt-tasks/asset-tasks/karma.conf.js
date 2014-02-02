@@ -2,7 +2,7 @@ var SETTINGS = require('../settings');
 
 module.exports = function(config) {
 
-  config.set && config.set({
+  if (config.set) config.set({
 
     // base path, that will be used to resolve files and exclude
     // basePath: './webapp/public/source',
