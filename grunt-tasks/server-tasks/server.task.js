@@ -1,31 +1,12 @@
-// todo: start node server from grunt
-// todo? nodemon
-
-// var SETTINGS = require("./settings"),
-    // SERVER   = require("../" + SETTINGS.SERVER_PATH + '/app.js').app;
+var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  /*
-  if ( process.execArgv[0] === "--standalone" ) {
-    // start in line when we're not running things through grunt
-    console.log("standalone");
-    module.exports.app = app.listen(1337);
-  } else {
-    // export app so grunt can start the server
-    module.exports.app = app;
-  }
-  */
-
   grunt.registerTask('server:start', 'Start a web server', function() {
-    console.log("-------------------------------------------------");
-    console.log("server:start called");
-    console.log("-------------------------------------------------");
+    var conf = {};
 
-    /*
-
-nodemon: {
-      dev: {
+    conf = {
+      task: {
         script: 'app.js',
         options: {
           cwd: "webapp",
@@ -37,14 +18,18 @@ nodemon: {
           // don't want to open a browser tab on start
           callback: function (nodemon) {
             nodemon.on('log', function (event) {
-              console.log("log nodemon");
-              console.log(event.colour);
+              console.log("------------------  nodemon log  --------------------");
+              console.log(arguments);
+              console.log("------------------ /nodemon log  --------------------");
             });
 
             // opens browser on initial server start
             nodemon.on('config:update', function () {
               // Delay before server listens on port
-              console.log("config:update nodemon");
+              console.log("------------------  nodemon config:update  --------------------");
+              console.log(arguments);
+              console.log("------------------ /nodemon config:update  --------------------");
+
               // setTimeout(function() {
               //   require('open')('http://localhost:5455');
               // }, 1000);
@@ -52,7 +37,10 @@ nodemon: {
 
             // refreshes browser when server reboots
             nodemon.on('restart', function () {
-              console.log("restart nodemon");
+              console.log("------------------  nodemon restart  --------------------");
+              console.log(arguments);
+              console.log("------------------ /nodemon restart  --------------------");
+
               // Delay before server listens on port
               // setTimeout(function() {
               //   require('fs').writeFileSync('.grunt/rebooted', 'rebooted');
@@ -61,11 +49,11 @@ nodemon: {
           }
         }
       }
-    }
+    };
 
-    */
-    /*console.log('Started web server on port ' + SETTINGS.SERVER_PORT);
-    SERVER.listen(SETTINGS.SERVER_PORT);*/
+    grunt.config('nodemon', conf);
+    grunt.task.run('nodemon');
+
   });
 
 };
