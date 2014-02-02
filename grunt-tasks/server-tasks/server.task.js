@@ -2,7 +2,7 @@ var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('server:start', 'Start a web server', function() {
+  grunt.registerTask('server:start', 'Start our webapp', function() {
     var conf = {};
 
     conf = {
