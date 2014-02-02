@@ -1,21 +1,6 @@
 ## Todos
 
-- X remove haml
--- X ? implement some sort of HTML partial business (.kit?)
--- X implement handlebars
-- X handlebar debugger
-- X express locals
-- X keep portions secret from github
-- X mvc file structure
-- X grunt todos
-
-- require -> browserify
-- grunt cleanup
--- separate front / back end tasks
-- node testing
-- string sanitization
-- password encryption
-- SSL set up
+// todo: SSL set up
 
 ### Task scenerios
 

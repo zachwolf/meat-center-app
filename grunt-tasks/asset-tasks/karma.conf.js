@@ -1,3 +1,5 @@
+// todo: require -> browserify
+
 var SETTINGS = require('../settings');
 
 module.exports = function(config) {

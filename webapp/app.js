@@ -1,3 +1,6 @@
+// todo: string sanitization
+// todo: password encryption
+
     // dependencies
 var express = require('express'),
     app     = express(),
