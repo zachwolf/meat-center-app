@@ -1,5 +1,3 @@
-// todo: build tasks
-// todo: watch tasks
 // task settings
 var SETTINGS = require( "./grunt-tasks/settings" );
 
