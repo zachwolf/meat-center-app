@@ -2,38 +2,6 @@ var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  // configure prompt task
-  grunt.registerTask('prompt:serverStart', 'prompt for starting server', function () {
-    var conf = {};
-    
-    conf = {
-      task: {
-        options: {
-          questions: [
-            {
-              config: 'options.startServer',
-              type: 'confirm',
-              default: false,
-              message: 'Start local server?'
-            }
-          ],
-          then: function(results){
-            if( results['options.startServer'] ) {
-              // start a local server
-              // grunt.task.run("server:start");
-              grunt.task.run("open");
-            }
-          }
-        }
-      }
-    };
-
-    grunt.config('prompt', conf);
-    grunt.task.run("prompt");
-
-  });
-
-
   // configure watch task
   // grunt.task.renameTask("watch", "_watch");
 
@@ -43,9 +11,6 @@ module.exports = function (grunt) {
 
     // clean out and recompile all of BUILD_PATH
     grunt.task.run("build:dev");
-
-    // prompt if we should start up the local server
-    grunt.task.run("prompt:serverStart");
 
     conf = {
       // reload the page when things change
@@ -76,8 +41,8 @@ module.exports = function (grunt) {
 
     // grunt.config('_watch', conf);
     // grunt.task.run("_watch");
-    grunt.config('watch', conf);
-    grunt.task.run("watch");
+    grunt.config('_watch', conf);
+    grunt.task.run("_watch");
 
   });
 

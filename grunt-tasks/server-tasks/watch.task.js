@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     var conf = {};
 
     conf = {
-      options: { livereload: true },
+      options: { livereload: false },
       // test our code on file change
       styles: {
         files: [
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
       }
     };
 
-    grunt.config('watch', conf);
-    grunt.task.run('watch');
+    grunt.config('_watch', conf);
+    grunt.task.run('_watch');
   });
 };

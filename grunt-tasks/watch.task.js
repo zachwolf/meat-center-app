@@ -2,17 +2,37 @@ var SETTINGS = require("./settings");
 
 module.exports = function(grunt) {
 
-  grunt.registerTask('watch', '', function () {
-    
+  // configure prompt task
+  grunt.registerTask('watch', 'prompt for starting server', function () {
     var conf = {};
-
+    
     conf = {
-      task : {
+      task: {
+        options: {
+          questions: [
+            {
+              config: 'options.startServer',
+              type: 'confirm',
+              default: false,
+              message: 'Start local server?'
+            }
+          ],
+          then: function(results){
+            if( results['options.startServer'] ) {
+              // run server and asset tasks
+              grunt.task.run('open');
+              grunt.task.run('concurrent:all');
+            } else {
+              // watch assets only
+              grunt.task.run('watch:assets');
+            }
+          }
+        }
       }
     };
 
-    grunt.config('todo', conf);
-    grunt.task.run("todo");
+    grunt.config('prompt', conf);
+    grunt.task.run('prompt');
 
   });
 

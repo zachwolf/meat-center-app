@@ -1,12 +1,12 @@
-var SETTINGS = require("./../settings");
+var SETTINGS = require("./settings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('concurrent:server', 'run and watch our server at the same time', function () {
+  grunt.registerTask('concurrent:all', 'run and watch our server and our assets at the same time', function () {
     var conf = {};
 
     conf = {
-      task: ['server:start', 'watch:server'],
+      task: ['concurrent:server', 'watch:assets'],
       options: {
         logConcurrentOutput: true
       }
