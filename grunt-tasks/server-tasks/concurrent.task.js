@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     var conf = {};
 
     conf = {
-      task: ['server:start', 'watch:server'],
+      task: ['server:start', 'watch:server', 'open'],
       options: {
         logConcurrentOutput: true
       }

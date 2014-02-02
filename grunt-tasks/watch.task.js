@@ -20,7 +20,6 @@ module.exports = function(grunt) {
           then: function(results){
             if( results['options.startServer'] ) {
               // run server and asset tasks
-              grunt.task.run('open');
               grunt.task.run('concurrent:all');
             } else {
               // watch assets only
