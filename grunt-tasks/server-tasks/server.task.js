@@ -39,8 +39,9 @@ module.exports = function (grunt) {
             nodemon.on('restart', function () {
               console.log("------------------  nodemon restart  --------------------");
               console.log(arguments);
+              // grunt.task.run('jshint:server');
+              // grunt.task.run('test:server');
               console.log("------------------ /nodemon restart  --------------------");
-
               // Delay before server listens on port
               // setTimeout(function() {
               //   require('fs').writeFileSync('.grunt/rebooted', 'rebooted');

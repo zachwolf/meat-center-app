@@ -20,7 +20,7 @@ module.exports = function (grunt) {
           then: function(results){
             if( results['options.startServer'] ) {
               // start a local server
-              grunt.task.run("server:start");
+              // grunt.task.run("server:start");
               grunt.task.run("open");
             }
           }
@@ -35,14 +35,14 @@ module.exports = function (grunt) {
 
 
   // configure watch task
-  grunt.task.renameTask("watch", "_watch");
+  // grunt.task.renameTask("watch", "_watch");
 
-  grunt.registerTask('watch', "Compile code on change", function () {
+  grunt.registerTask('watch:assets', "Compile code on change", function () {
 
     var conf = {};
 
     // clean out and recompile all of BUILD_PATH
-    // grunt.task.run("build");
+    grunt.task.run("build:dev");
 
     // prompt if we should start up the local server
     grunt.task.run("prompt:serverStart");
@@ -74,8 +74,10 @@ module.exports = function (grunt) {
       }
     };
 
-    grunt.config('_watch', conf);
-    grunt.task.run("_watch");
+    // grunt.config('_watch', conf);
+    // grunt.task.run("_watch");
+    grunt.config('watch', conf);
+    grunt.task.run("watch");
 
   });
 
