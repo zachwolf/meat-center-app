@@ -1,3 +1,4 @@
+// todo? convert variable usage to <%= settings %> syntax
 // todo? jshint single or double quotes
 
 var _ = require('underscore'),
