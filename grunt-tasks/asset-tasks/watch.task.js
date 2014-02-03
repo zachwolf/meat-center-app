@@ -2,9 +2,6 @@ var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  // configure watch task
-  // grunt.task.renameTask("watch", "_watch");
-
   grunt.registerTask('watch:assets', "Compile code on change", function () {
 
     var conf = {};
@@ -39,8 +36,6 @@ module.exports = function (grunt) {
       }
     };
 
-    // grunt.config('_watch', conf);
-    // grunt.task.run("_watch");
     grunt.config('_watch', conf);
     grunt.task.run("_watch");
 
