@@ -1,4 +1,5 @@
 // task settings
+// todo: grunt/git reset build dir
 var SETTINGS = require( "./grunt-tasks/settings" );
 
 module.exports = function(grunt) {
