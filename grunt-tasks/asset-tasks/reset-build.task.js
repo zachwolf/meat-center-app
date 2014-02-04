@@ -2,7 +2,7 @@ var SETTINGS = require("./../settings");
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('reset_build', 'clean and checkout our build directory', function () {
+  grunt.registerTask('reset_build', 'clean and git checkout our build directory', function () {
     var conf = {};
 
     conf = {
