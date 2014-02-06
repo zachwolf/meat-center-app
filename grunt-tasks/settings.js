@@ -70,13 +70,7 @@ settings.JSHINT_DIST_SETTINGS = _.extend({
   }, settings.JSHINT_BASE_SETTINGS);
 
 settings.JSHINT_SERVER_SETTINGS = _.extend({
-    "globals" : {
-      "__dirname" : true,
-      "exports"   : true,
-      "require"   : true,
-      "console"   : true,
-      "module"    : true
-    }
+    "node": true
   }, settings.JSHINT_BASE_SETTINGS);
 
 
