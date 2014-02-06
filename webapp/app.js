@@ -2,7 +2,8 @@
 // todo: password encryption
 
     // dependencies
-var express = require('express'),
+var utils   = require('./utils'),
+    express = require('express'),
     app     = express(),
     Redis   = require('connect-redis')(express),
     exphbs  = require('express3-handlebars'),
@@ -91,22 +92,11 @@ if (!module.parent) {
  * Middleware
  */
 
-function authenticate(req, res, next) {
+console.log("------------------  utils.authenticate  --------------------");
+console.log(utils.authenticate);
+console.log("------------------ /utils.authenticate  --------------------");
 
-  "use strict";
-
-  if (req.session.loggedIn !== true) {
-    req.flash('referralURL', req.url);
-    return res.redirect('/login');
-  } else {
-    // expose info to templates
-    res.locals(req.session.user);
-    res.locals({"loggedIn": true});
-    next();
-  }
-}
-
-app.use(authenticate);
+app.use(utils.authenticate);
 
 /*
  * Routing
