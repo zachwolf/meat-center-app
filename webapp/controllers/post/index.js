@@ -1,23 +1,44 @@
-// app.get('/posts', authenticate, post.index);
+// app.get('/posts');
 exports.list = function(req, res, next){
   "use strict";
 
-  res.render('list');
+  res.render('list', {
+    message: req.flash('message')[0]
+  });
 };
 
-// app.get('/post/new', authenticate, post.index);
+// app.get('/post/new');
 exports.create = function(req, res, next){
   "use strict";
 
   res.render('new');
 };
 
+// app.post('/post/new');
+exports.save = function(req, res, next){
+  "use strict";
 
-// app.get('/post', authenticate, post.index);
-// app.get('/post/new', post.createNew);
-// app.post('/post/add', post.submitNew);
-// app.get('/post/:id', post.single);
-// app.get('/post/:id/edit', post.edit);
-// app.post('/post/:id/update', post.update);
-// app.post('/post/:id/delete', post.delete);
-// app.get('/post/search', post.search);
+  if (!req.body.exampleVal) {
+    res.render('new', {
+      'errors': 'This is an error'
+    });
+  } else {
+    req.flash('message', {
+      type: 'success',
+      value: 'New post created'
+    });
+
+    return res.redirect('/posts');
+  }
+
+};
+
+
+// app.get('/post');
+// app.get('/post/new');
+// app.post('/post/add');
+// app.get('/post/:id');
+// app.get('/post/:id/edit');
+// app.post('/post/:id/update');
+// app.post('/post/:id/delete');
+// app.get('/post/search');

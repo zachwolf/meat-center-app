@@ -1,1 +1,8 @@
-create new entry
+{{#if errors}}
+{{errors}}
+<hr>
+{{/if}}
+<form action="/post/new" method="POST">
+	<input name="exampleVal" type="test">
+	<input type="submit">
+</form>
