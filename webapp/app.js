@@ -162,5 +162,3 @@ if (!module.parent) {
   });
 
 }
-
-return "hello";
