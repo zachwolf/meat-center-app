@@ -3,7 +3,10 @@ exports.index = function(req, res){
 
   "use strict";
 
-  res.render('landing');
+  // todo: user authentication
+  console.log("redirect to /posts");
+
+  return res.redirect('/posts');
 };
 
 
