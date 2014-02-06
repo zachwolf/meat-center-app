@@ -91,20 +91,22 @@ if (!module.parent) {
  * Middleware
  */
 
-// function authenticate(req, res, next) {
+function authenticate(req, res, next) {
 
-//   "use strict";
+  "use strict";
 
-//   if (req.session.loggedIn !== true) {
-//     req.flash('referralURL', req.url);
-//     return res.redirect('/login');
-//   } else {
-//     // expose info to templates
-//     res.locals(req.session.user);
-//     res.locals({"loggedIn": true});
-//     next();
-//   }
-// }
+  if (req.session.loggedIn !== true) {
+    req.flash('referralURL', req.url);
+    return res.redirect('/login');
+  } else {
+    // expose info to templates
+    res.locals(req.session.user);
+    res.locals({"loggedIn": true});
+    next();
+  }
+}
+
+app.use(authenticate);
 
 /*
  * Routing
