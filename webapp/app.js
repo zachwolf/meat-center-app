@@ -76,7 +76,7 @@ app.use(flash());
 app.use(express.compress());
 app.use(express.bodyParser());
 
-// ?
+// todo? what does methodOverride do?
 app.use(express.methodOverride());
 
 app.use(express.static(__dirname + '/public/build'));
@@ -87,16 +87,12 @@ if (!module.parent) {
 }
 
 
-
 /*
  * Middleware
  */
 
-console.log("------------------  utils.authenticate  --------------------");
-console.log(utils.authenticate);
-console.log("------------------ /utils.authenticate  --------------------");
-
 app.use(utils.authenticate);
+
 
 /*
  * Routing
