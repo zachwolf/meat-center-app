@@ -1,12 +1,17 @@
+// app.get('/posts', authenticate, post.index);
 exports.list = function(req, res, next){
-
   "use strict";
 
   res.render('list');
 };
 
+// app.get('/post/new', authenticate, post.index);
+exports.create = function(req, res, next){
+  "use strict";
 
-// app.all('/post/*', authenticate);
+  res.render('new');
+};
+
 
 // app.get('/post', authenticate, post.index);
 // app.get('/post/new', post.createNew);
