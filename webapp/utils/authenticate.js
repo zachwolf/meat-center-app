@@ -2,6 +2,10 @@ function authenticate (req, res, next) {
 
   "use strict";
 
+  if (!req.session) {
+    throw new Error("req.session can't be found. Is redis running?");
+  }
+
   console.log("------------------  authenticate  --------------------");
   // console.log('req', req);
   // console.log("-------------------------------------------------");
