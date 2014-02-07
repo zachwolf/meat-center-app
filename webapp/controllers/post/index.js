@@ -46,6 +46,12 @@ exports.show = function (req, res, next) {
 };
 
 // app.get('/post/:id/edit');
+exports.edit = function (req, res, next) {
+  "use strict";
+
+  res.render('edit');
+};
+
 // app.post('/post/:id/update');
 // app.post('/post/:id/delete');
 // app.get('/post/search');
