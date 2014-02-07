@@ -2,6 +2,8 @@
 exports.list = function(req, res, next){
   "use strict";
 
+  // todo: load posts
+  // todo: pagination
   res.render('list', {
     message: req.flash('message')[0]
   });
@@ -27,6 +29,8 @@ exports.save = function(req, res, next){
       type: 'success',
       value: 'New post created'
     });
+
+    // todo: post submission
 
     return res.redirect('/posts');
   }
