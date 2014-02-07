@@ -30,14 +30,17 @@ exports.save = function(req, res, next){
 
     return res.redirect('/posts');
   }
-
 };
 
-
-// app.get('/post');
-// app.get('/post/new');
-// app.post('/post/add');
 // app.get('/post/:id');
+exports.show = function (req, res, next) {
+  "use strict";
+
+  res.render('single', {
+    'id': req.params.post_id
+  });
+};
+
 // app.get('/post/:id/edit');
 // app.post('/post/:id/update');
 // app.post('/post/:id/delete');
