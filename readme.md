@@ -17,6 +17,7 @@
 - `$ grunt server:start` runs `nodemon` to start our server and watch for changes
 - `$ grunt reset_build` deletes and checks out the build directory. Useful if you don't want to check in your compiled code yet.
 - `$ grunt watch:assets` watches and triggers live reload on change of our assets. (alias for `compass:dev` `jshint:dev`, `karma`, `browserify`)
+- `$ grunt todos` find todo notes we've left for ourselves
 
 
 ## Todos
