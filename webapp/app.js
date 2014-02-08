@@ -7,7 +7,6 @@ var middleware = require('./middleware'),
     express  = require('express'),
     app      = express(),
 
-    Redis    = require('connect-redis')(express),
     mongoose = require('mongoose'),
     // Dont delete - will be used in the future
     // config  = require('./config'),
@@ -24,26 +23,6 @@ console.log("app.js loaded");
 
 // files for error pages
 app.set('views', __dirname + '/views');
-
-// session 
-
-app.use(express.cookieParser('keyboard cat'));
-app.use(express.session({
-    secret: 'keyboard cat',
-    store: new Redis({
-      host: 'localhost', port: 6379
-    })
-  })
-);
-
-// general setup
-
-app.use(express.compress());
-app.use(express.bodyParser());
-
-// methodOverride() allows us to use app.put and app.delete methods
-// http://stackoverflow.com/questions/8378338/what-does-connect-js-methodoverride-do#answer-8378414
-app.use(express.methodOverride());
 
 app.use(express.static(__dirname + '/public/build'));
 
