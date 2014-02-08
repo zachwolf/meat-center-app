@@ -1,8 +1,7 @@
+/*jslint node: true */
+"use strict";
 
 exports.index = function(req, res){
-
-  "use strict";
-
   // todo: user authentication
   console.log("redirect to /posts");
 

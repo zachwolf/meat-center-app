@@ -1,3 +1,6 @@
+/*jslint node: true */
+"use strict";
+
 // todo: string sanitization
 // todo: password encryption
 
@@ -50,8 +53,6 @@ require('./lib/boot')(app, { verbose: !module.parent });
 
 app.use(function(err, req, res, next){
 
-  "use strict";
-
   // treat as 404
   if (~err.message.indexOf('not found')) {
     return next();
@@ -66,8 +67,6 @@ app.use(function(err, req, res, next){
 
 // assume 404 since no middleware responded
 app.use(function(req, res, next){
-
-  "use strict";
 
   res.status(404).render('404', { url: req.originalUrl });
 });
@@ -84,8 +83,6 @@ if (!module.parent) {
 
   // mongoclient.open(function(err, mongoclient) {
   db.once('open', function (err) {
-
-    "use strict";
 
     if(err) {
       throw err;
