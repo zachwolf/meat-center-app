@@ -28,6 +28,15 @@ module.exports = function (app) {
   app.engine('handlebars', hbs.engine);
   app.set('view engine', 'handlebars');
 
+  // general setup
+
+  app.use(express.compress()); // gzips (i think)
+  app.use(express.bodyParser());
+
+  // methodOverride() allows us to use app.put and app.delete methods
+  // http://stackoverflow.com/questions/8378338/what-does-connect-js-methodoverride-do#answer-8378414
+  app.use(express.methodOverride());
+
   // flash setup
 
   app.use(flash());
