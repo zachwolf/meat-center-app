@@ -2,9 +2,11 @@
 "use strict";
 
 var rootPath = require('../config').rootPath,
+    express  = require('express'),
+    Redis    = require('connect-redis')(express),
     exphbs   = require('express3-handlebars'),
-    helpers  = require(rootPath('lib/handlebars-helpers')),
     flash    = require('connect-flash'),
+    helpers  = require(rootPath('lib/handlebars-helpers')),
     hbs;
 
 module.exports = function (app) {
@@ -29,6 +31,17 @@ module.exports = function (app) {
   // flash setup
 
   app.use(flash());
+
+  // session 
+
+  app.use(express.cookieParser('keyboard cat'));
+  app.use(express.session({
+      secret: 'keyboard cat',
+      store: new Redis({
+        host: 'localhost', port: 6379
+      })
+    })
+  );
 
 };
 
