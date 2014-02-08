@@ -1,5 +1,6 @@
 // todo: string sanitization
 // todo: password encryption
+// todo: seperate middleware
 
     // dependencies
 var utils   = require('./utils'),
