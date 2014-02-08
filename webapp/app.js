@@ -8,7 +8,6 @@ var middleware = require('./middleware'),
     app      = express(),
 
     Redis    = require('connect-redis')(express),
-    flash    = require('connect-flash'),
     mongoose = require('mongoose'),
     // Dont delete - will be used in the future
     // config  = require('./config'),
@@ -37,10 +36,6 @@ app.use(express.session({
   })
 );
 
-// flash setup
-
-app.use(flash());
-
 // general setup
 
 app.use(express.compress());
@@ -52,12 +47,13 @@ app.use(express.methodOverride());
 
 app.use(express.static(__dirname + '/public/build'));
 
-// log
 
 
 /*
  * Middleware
  */
+
+// log
 
 if (!module.parent) {
   app.use(express.logger('dev'));

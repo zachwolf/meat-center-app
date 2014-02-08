@@ -4,6 +4,7 @@
 var rootPath = require('../config').rootPath,
     exphbs   = require('express3-handlebars'),
     helpers  = require(rootPath('lib/handlebars-helpers')),
+    flash    = require('connect-flash'),
     hbs;
 
 module.exports = function (app) {
@@ -24,6 +25,10 @@ module.exports = function (app) {
   });
   app.engine('handlebars', hbs.engine);
   app.set('view engine', 'handlebars');
+
+  // flash setup
+
+  app.use(flash());
 
 };
 
