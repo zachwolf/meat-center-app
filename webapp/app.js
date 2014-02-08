@@ -1,12 +1,10 @@
 // todo: string sanitization
 // todo: password encryption
-// todo: seperate middleware
 
     // dependencies
 var middleware = require('./middleware'),
     express  = require('express'),
     app      = express(),
-
     mongoose = require('mongoose'),
     // Dont delete - will be used in the future
     // config  = require('./config'),
@@ -24,6 +22,7 @@ console.log("app.js loaded");
 // files for error pages
 app.set('views', __dirname + '/views');
 
+// static file locaction
 app.use(express.static(__dirname + '/public/build'));
 
 
