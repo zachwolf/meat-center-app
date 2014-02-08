@@ -3,19 +3,17 @@
 // todo: seperate middleware
 
     // dependencies
-var utils    = require('./middleware'),
+var middleware = require('./middleware'),
     express  = require('express'),
     app      = express(),
+
     Redis    = require('connect-redis')(express),
-    exphbs   = require('express3-handlebars'),
-    helpers  = require('./lib/handlebars-helpers'),
     flash    = require('connect-flash'),
     mongoose = require('mongoose'),
     // Dont delete - will be used in the future
     // config  = require('./config'),
     // util    = require('util'),
     PORT    = 1337,
-    hbs,
     db;
 
 console.log("app.js loaded");
@@ -23,22 +21,6 @@ console.log("app.js loaded");
 /*
  * App setup
  */
-
-// handlebars setup
-
-// based on example set up:
-// https://github.com/ericf/express3-handlebars/blob/master/examples/advanced/app.js
-hbs = exphbs.create({
-  defaultLayout : 'main',
-  helpers : helpers,
-  partialsDir : [
-    // __dirname + '/public/templates/', // not sure about this path set up
-    'views/partials/'
-  ]
-});
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-// app.set('view engine', 'html');
 
 
 // files for error pages
@@ -71,16 +53,17 @@ app.use(express.methodOverride());
 app.use(express.static(__dirname + '/public/build'));
 
 // log
-if (!module.parent) {
-  app.use(express.logger('dev'));
-}
 
 
 /*
  * Middleware
  */
 
-app.use(utils.authenticate);
+if (!module.parent) {
+  app.use(express.logger('dev'));
+}
+
+middleware(app);
 
 
 /*
