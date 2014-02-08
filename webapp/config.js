@@ -1,3 +1,13 @@
-var secrets = require('../../secrets');
+/*jslint node: true */
+"use strict";
 
-exports.secrets = secrets;
+var secrets = require('../../secrets'),
+		path    = require('path');
+
+module.exports.secrets = secrets;
+
+function rootPath (name) {
+	return path.resolve(__dirname, name);
+}
+
+module.exports.rootPath = rootPath;
