@@ -64,7 +64,8 @@ app.use(flash());
 app.use(express.compress());
 app.use(express.bodyParser());
 
-// todo? what does methodOverride do?
+// methodOverride() allows us to use app.put and app.delete methods
+// http://stackoverflow.com/questions/8378338/what-does-connect-js-methodoverride-do#answer-8378414
 app.use(express.methodOverride());
 
 app.use(express.static(__dirname + '/public/build'));
