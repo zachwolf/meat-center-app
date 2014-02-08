@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             {
               config: 'options.startServer',
               type: 'confirm',
-              default: false,
+              default: true,
               message: 'Start local server?'
             }
           ],
