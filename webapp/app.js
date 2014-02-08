@@ -3,7 +3,7 @@
 // todo: seperate middleware
 
     // dependencies
-var utils    = require('./utils'),
+var utils    = require('./middleware'),
     express  = require('express'),
     app      = express(),
     Redis    = require('connect-redis')(express),
