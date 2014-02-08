@@ -3,43 +3,26 @@
 // todo: seperate middleware
 
     // dependencies
-var utils   = require('./utils'),
-    express = require('express'),
-    app     = express(),
-    Redis   = require('connect-redis')(express),
-    exphbs  = require('express3-handlebars'),
-    helpers = require('./lib/handlebars-helpers'),
-    flash   = require('connect-flash'),
+var utils    = require('./utils'),
+    express  = require('express'),
+    app      = express(),
+    Redis    = require('connect-redis')(express),
+    exphbs   = require('express3-handlebars'),
+    helpers  = require('./lib/handlebars-helpers'),
+    flash    = require('connect-flash'),
+    mongoose = require('mongoose'),
     // Dont delete - will be used in the future
     // config  = require('./config'),
     // util    = require('util'),
     PORT    = 1337,
     hbs,
     db;
-    // ,
-    // MongoDB = require('mongodb'),
-    // MongoClient,
-    // mongoclient,
-    // Server;
 
 console.log("app.js loaded");
 
 /*
  * App setup
  */
-
-// mongodb setup
-
-// MongoClient = MongoDB.MongoClient;
-// Server      = MongoDB.Server;
-
-// mongoclient = new MongoClient(new Server("localhost", 27017));
-// db = mongoclient.db('meatCenter');
-
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/meatCenter');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
 
 // handlebars setup
 
@@ -136,6 +119,10 @@ app.use(function(req, res, next){
  */
 
 if (!module.parent) {
+
+  mongoose.connect('mongodb://localhost/meatCenter');
+  db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
 
   // mongoclient.open(function(err, mongoclient) {
   db.once('open', function (err) {
