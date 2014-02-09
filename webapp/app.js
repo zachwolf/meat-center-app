@@ -3,6 +3,7 @@
 
 // todo: string sanitization
 // todo: password encryption
+// todo: move views from controllers to views
 
     // dependencies
 var middleware = require('./middleware'),
