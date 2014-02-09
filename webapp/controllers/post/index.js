@@ -2,6 +2,7 @@
 "use strict";
 
 // todo? rename '/post' to '/order'
+// todo: better error handling
 
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
@@ -24,11 +25,14 @@ var mongoose = require('mongoose'),
 
 // app.get('/posts');
 exports.list = function(req, res, next){
-  // todo: load posts
-  // todo: pagination
-  res.render('list', {
-    message: req.flash('message')[0]
+  // todo: pagination / limit load
+  Order.find({}, function (err, docs) {
+    res.render('list', {
+      message: req.flash('message')[0],
+      orders: docs
+    });
   });
+
 };
 
 // app.get('/post/new');
@@ -39,34 +43,41 @@ exports.create = function(req, res, next){
 // app.post('/post/new');
 exports.save = function(req, res, next){
 
-  console.log("------------------  exports.save  --------------------");
-  console.log("req.session", req.session);
-  console.log("req.body", req.body);
-  console.log("------------------ /exports.save  --------------------");
-
-  var order = new Order({
-      creator: req.session.user.username
-    });
-
-  for (var param in req.body) {
-    if (req.body.hasOwnProperty(param)) {
-      order[param] = req.body[param];
-    }
-  }
-
   if (!req.body.exampleVal) {
     res.render('new', {
       'errors': 'This is an error'
     });
   } else {
-    req.flash('message', {
-      type: 'success',
-      value: 'New post created'
+
+    console.log("------------------  exports.save  --------------------");
+    console.log("req.session", req.session);
+    console.log("req.body", req.body);
+    console.log("------------------ /exports.save  --------------------");
+
+    var order = new Order({
+        creator: req.session.user.username
+      });
+
+    for (var param in req.body) {
+      if (req.body.hasOwnProperty(param)) {
+        order[param] = req.body[param];
+      }
+    }
+
+    order.save(function (err) {
+      if (err) {
+        throw new Error(err);
+      }
+
+      req.flash('message', {
+        type: 'success',
+        value: 'New post created'
+      });
+
+      // todo: post submission
+
+      return res.redirect('/posts');
     });
-
-    // todo: post submission
-
-    return res.redirect('/posts');
   }
 };
 
