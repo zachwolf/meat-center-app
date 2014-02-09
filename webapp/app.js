@@ -5,15 +5,16 @@
 // todo: password encryption
 // todo: move views from controllers to views
 
+// Dont delete - will be used in the future
+// config  = require('./config'),
+// util    = require('util'),
+
     // dependencies
 var middleware = require('./middleware'),
     express  = require('express'),
     app      = express(),
     mongoose = require('mongoose'),
-    // Dont delete - will be used in the future
-    // config  = require('./config'),
-    // util    = require('util'),
-    PORT    = 1337,
+    PORT     = require('./config').port,
     db;
 
 console.log("app.js loaded");

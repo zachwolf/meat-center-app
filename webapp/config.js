@@ -11,3 +11,6 @@ function rootPath (name) {
 }
 
 module.exports.rootPath = rootPath;
+
+// port number
+module.exports.port = 1337;
