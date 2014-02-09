@@ -52,6 +52,17 @@ module.exports = function (app) {
     })
   );
 
+  // BEGIN DUMMY LOGGED IN DATA
+  app.use(function (req, res, next) {
+    req.session.loggedin = true;
+    req.session.user = {
+      username: 'hello@zachwolf.com'
+    };
+
+    next();
+  });
+  // END DUMMY LOGGED IN DATA
+
 };
 
 // app.use(utils.authenticate);
