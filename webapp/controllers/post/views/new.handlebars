@@ -3,6 +3,9 @@
 <hr>
 {{/if}}
 <form action="/post/new" method="POST">
-	<input name="exampleVal" type="test">
+	<!-- Will be saved: -->
+	<input name="exampleVal" type="text"> <br>
+	<!-- Wont be saved: -->
+	<input name="exampleVal2" type="text"> <br>
 	<input type="submit">
 </form>
