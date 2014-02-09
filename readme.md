@@ -2,11 +2,14 @@
 
 ## Setup
 
-- start redis: `$ redis-server`
-- start mongo: `$ mongod`
 - `$ git clone git@github.com:zachwolf/meat-center-app.git` or use the github app
 - `$ cd meat-center-app`
 - `$ npm install`
+
+## Start local instance
+
+- start redis: `$ redis-server`
+- start mongo: `$ mongod`
 - `$ grunt concurrent:server` for server dev
 - `$ grunt watch` for asset dev with server dev option
 
