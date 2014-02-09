@@ -1,5 +1,5 @@
 var SETTINGS = require("./settings"),
-    exec     = require('child_process').exec;
+    spawn    = require('child_process').spawn;
 
 module.exports = function (grunt) {
 
@@ -15,18 +15,12 @@ module.exports = function (grunt) {
    
       // log todos
       if (data === "todos") {
-        exec( 'grunt todos', function(error, stdout, stderror) {
-          if(error) throw error;
-          console.log("stdout", stdout);
-        });
+        spawn('grunt', ['todos'], { stdio: 'inherit'});
       }
    
       // reset built asset files
       if (data === "reset_build") {
-        exec( 'grunt reset_build', function(error, stdout, stderror) {
-          if(error) throw error;
-          console.log("stdout", stdout);
-        });
+        spawn('grunt', ['reset_build'], { stdio: 'inherit'});
       }
     });
 
