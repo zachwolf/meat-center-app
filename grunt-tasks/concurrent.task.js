@@ -7,6 +7,8 @@ module.exports = function (grunt) {
     var conf = {};
 
     // enable input while task is watching
+    // todo: this currently seems to break the watch task. Fix that.
+    // error Fatal error: read EIO
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     process.stdin.on('data', function (data) {
