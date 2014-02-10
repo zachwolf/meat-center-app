@@ -74,8 +74,6 @@ exports.save = function(req, res, next){
         value: 'New post created'
       });
 
-      // todo: post submission
-
       return res.redirect('/posts');
     });
   }
@@ -83,7 +81,7 @@ exports.save = function(req, res, next){
 
 // app.get('/post/:id');
 exports.show = function (req, res, next) {
-  Order.findOne({"_id": req.params.post_id}, function (err, doc) {
+  Order.findById(req.params.post_id, function (err, doc) {
     res.render('single', {
       message: req.flash('message')[0],
       order: doc
@@ -93,9 +91,47 @@ exports.show = function (req, res, next) {
 
 // app.get('/post/:id/edit');
 exports.edit = function (req, res, next) {
-  res.render('edit');
+  Order.findById(req.params.post_id, function (err, doc) {
+    res.render('edit', {
+      order: doc
+    });
+  });
 };
 
 // app.put('/post/:id/update');
+exports.update = function (req, res, next) {
+  console.log("------------------  .update  --------------------");
+  console.log("req.params", req.params);
+  console.log("req.body", req.body);
+  console.log("------------------ /.update  --------------------");
+
+  Order.findById(req.params.post_id, function (err, doc) {
+    
+    for (var param in req.body) {
+      if (req.body.hasOwnProperty(param)) {
+        doc[param] = req.body[param];
+      }
+    }
+
+    doc.save(function (err) {
+
+      req.flash('message', {
+        type: 'success',
+        value: 'Updated Post'
+      });
+
+      return res.redirect('/post/' + req.params.post_id);
+    });
+
+    /*
+    return res.
+    res.render('edit', {
+      order: doc
+    });
+    res.send("putted!");*/
+  });
+
+};
+
 // app.delete('/post/:id/delete');
 // app.get('/post/search');

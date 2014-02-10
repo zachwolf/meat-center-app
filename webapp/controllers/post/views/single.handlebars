@@ -1,5 +1,9 @@
 {{debug}}
 
+{{#if message}}
+{{message.value}}
+<hr>
+{{/if}}
 Post name: {{order.exampleVal}}
 <br>
 <a href="/post/{{order._id}}/edit">edit</a>

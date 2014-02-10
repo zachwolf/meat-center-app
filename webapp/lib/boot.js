@@ -48,8 +48,8 @@ module.exports = function(parent, options){
           path = '/' + name + '/:' + name + '_id/edit';
           break;
         case 'update':
-          method = 'post';
-          path = '/' + name + '/:' + name + '_id';
+          method = 'put';
+          path = '/' + name + '/:' + name + '_id/update';
           break;
         case 'create':
           method = 'get';

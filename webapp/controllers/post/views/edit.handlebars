@@ -1,8 +1,15 @@
-edit
+{{debug}}
+<form action="/post/{{order._id}}/update" method="POST">
+	<input type="hidden" name="_method" value="put">
+	<!-- Will be saved: -->
+	<input name="exampleVal" type="text" value="{{order.exampleVal}}">
+	<!-- <input type="submit"> -->
+	<br>
+	<a href="/post/{{order._id}}">Cancel</a>
+	<br>
+	<input type="submit" value="Save">
+</form>
 <br>
-<a href="##">Cancel</a>
-<br>
-<a href="##">Save</a>
 <br>
 <hr>
 <a href="##">Delete</a>
