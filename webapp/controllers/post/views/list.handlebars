@@ -7,14 +7,11 @@
 <hr>
 {{/if}}
 <table>
+	{{#each orders}}
 	<tr>
 		<td>
-			<a href="/post/1">post 1</a>
+			<a href="/post/{{_id}}">{{exampleVal}}</a>
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<a href="/post/2">post 2</a>
-		</td>
-	</tr>
+	{{/each}}
 </table>
