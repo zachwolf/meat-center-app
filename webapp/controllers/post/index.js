@@ -2,7 +2,7 @@
 "use strict";
 
 // todo? rename '/post' to '/order'
-// todo: better error handling
+// todo: better (or any) error handling
 
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
