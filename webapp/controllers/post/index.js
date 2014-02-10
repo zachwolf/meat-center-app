@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
     orderSchema = new Schema({
       // name    : String,
+      // todo: better order info
       creator : String,
       date    : { type: Date, default: Date.now },
       exampleVal: String // dummy value
