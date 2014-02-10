@@ -123,15 +123,21 @@ exports.update = function (req, res, next) {
       return res.redirect('/post/' + req.params.post_id);
     });
 
-    /*
-    return res.
-    res.render('edit', {
-      order: doc
-    });
-    res.send("putted!");*/
   });
 
 };
 
 // app.delete('/post/:id/delete');
+exports.delete = function (req, res, next) {
+  Order.findByIdAndRemove(req.params.post_id, function (err, doc) {
+
+    req.flash('message', {
+      type: 'success',
+      value: 'Post Deleted'
+    });
+
+    return res.redirect('/posts');
+  });
+};
+
 // app.get('/post/search');

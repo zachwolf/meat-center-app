@@ -61,8 +61,8 @@ module.exports = function(parent, options){
           path = '/' + name +'/new';
           break;
         case 'delete':
-          method = 'post';
-          path = '/' + name +'/delete';
+          method = 'delete';
+          path = '/' + name + '/:' + name + '_id/delete';
           break;
         case 'index':
           method = 'get';

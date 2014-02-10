@@ -12,4 +12,7 @@
 <br>
 <br>
 <hr>
-<a href="##">Delete</a>
+<form action="/post/{{order._id}}/delete" method="POST">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
