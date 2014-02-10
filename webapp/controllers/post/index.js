@@ -83,8 +83,11 @@ exports.save = function(req, res, next){
 
 // app.get('/post/:id');
 exports.show = function (req, res, next) {
-  res.render('single', {
-    'id': req.params.post_id
+  Order.findOne({"_id": req.params.post_id}, function (err, doc) {
+    res.render('single', {
+      message: req.flash('message')[0],
+      order: doc
+    });
   });
 };
 
