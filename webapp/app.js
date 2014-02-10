@@ -3,7 +3,6 @@
 
 // todo: string sanitization
 // todo: password encryption
-// todo: move views from controllers to views
 
 // Dont delete - will be used in the future
 // config  = require('./config'),

@@ -1,7 +1,8 @@
 
 // var express = require('../../..')
 var express = require('express')
-  , fs = require('fs');
+  , fs = require('fs')
+  , normalizePath = require('path').normalize;
 
 module.exports = function(parent, options){
   var verbose = options.verbose;
@@ -16,7 +17,7 @@ module.exports = function(parent, options){
 
     // allow specifying the view engine
     if (obj.engine) app.set('view engine', obj.engine);
-    app.set('views', __dirname + '/../controllers/' + name + '/views');
+    app.set('views', normalizePath(__dirname + '/../views/' + name));
 
     // before middleware support
     if (obj.before) {
