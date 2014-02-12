@@ -27,10 +27,17 @@ var mongoose = require('mongoose'),
 // app.get('/posts');
 exports.list = function(req, res, next){
   // todo: pagination / limit load
-  Order.find({}, function (err, docs) {
-    res.render('list', {
-      message: req.flash('message')[0],
-      orders: docs
+  console.log("-------------------------------------------------");
+  console.log("Order", Order);
+  console.log("-------------------------------------------------");
+  Order.count({}, function (err, count) {
+
+    Order.find({}, {}, { skip: 0, limit: 5 }, function (err, docs) {
+      res.render('list', {
+        message: req.flash('message')[0],
+        orders: docs,
+        count: count
+      });
     });
   });
 
@@ -49,12 +56,6 @@ exports.save = function(req, res, next){
       'errors': 'This is an error'
     });
   } else {
-
-    console.log("------------------  exports.save  --------------------");
-    console.log("req.session", req.session);
-    console.log("req.body", req.body);
-    console.log("------------------ /exports.save  --------------------");
-
     var order = new Order({
         creator: req.session.user.username
       });
@@ -101,11 +102,6 @@ exports.edit = function (req, res, next) {
 
 // app.put('/post/:id/update');
 exports.update = function (req, res, next) {
-  console.log("------------------  .update  --------------------");
-  console.log("req.params", req.params);
-  console.log("req.body", req.body);
-  console.log("------------------ /.update  --------------------");
-
   Order.findById(req.params.post_id, function (err, doc) {
     
     for (var param in req.body) {
