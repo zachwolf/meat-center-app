@@ -24,12 +24,29 @@ var mongoose = require('mongoose'),
     }),
     Order = mongoose.model("Order", orderSchema);
 
+
+
+// app.get('/post/search');
+function searchView (req, res, next) {
+  // console.log("req.query.search", req.query.search);
+  Order.find({"exampleVal": {"$regex": req.query.search}}, {}, { skip: 0, limit: 5 }, function (err, docs) {
+    res.render('list', {
+      message: req.flash('message')[0],
+      orders: docs
+    });
+  });
+  // return res.send('search');
+}
+
 // app.get('/posts');
 exports.list = function(req, res, next){
+
+  // check to see if we're currently searching
+  if (!!req.query.search && !!req.query.search.length) {
+    return searchView(req, res, next);
+  }
+
   // todo: pagination / limit load
-  console.log("-------------------------------------------------");
-  console.log("Order", Order);
-  console.log("-------------------------------------------------");
   Order.count({}, function (err, count) {
 
     Order.find({}, {}, { skip: 0, limit: 5 }, function (err, docs) {
@@ -136,5 +153,3 @@ exports.delete = function (req, res, next) {
     return res.redirect('/posts');
   });
 };
-
-// app.get('/post/search');

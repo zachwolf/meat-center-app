@@ -8,4 +8,13 @@
 	{{else}}
 	<li><a href="/login">login</a></li>
 	{{/if}}
+	<li>
+		<form action="/posts" method="get">
+			<fieldset>
+				<legend>search</legend>
+				<label for="search">Search:</label>
+				<input type="search" name="search" id="search" placeholder="search">
+			</fieldset>
+		</form>
+	</li>
 </ul>
