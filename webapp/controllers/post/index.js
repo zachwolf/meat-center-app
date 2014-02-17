@@ -24,10 +24,8 @@ var mongoose = require('mongoose'),
     }),
     Order = mongoose.model("Order", orderSchema);
 
-
-
 // app.get('/post/search');
-function searchView (req, res, next) {
+/*function searchView (req, res, next) {
   // console.log("req.query.search", req.query.search);
   Order.find({"exampleVal": {"$regex": req.query.search}}, {}, { skip: 0, limit: 5 }, function (err, docs) {
     res.render('list', {
@@ -36,18 +34,36 @@ function searchView (req, res, next) {
     });
   });
   // return res.send('search');
+}*/
+
+function paginate (settings, cb) { /* settings: { conditions: {}, fields: {}, options: {} } */
+  var conditions = settings.conditions || {},
+      fields     = settings.fields || {},
+      options    = settings.options || {}; /* here we can unify pagination */
+
+  Order.find(conditions, fields, options, function (err, docs) {
+    if (err) { throw new Error(err); }
+    cb(docs);
+  });
 }
 
 // app.get('/posts');
 exports.list = function(req, res, next){
 
-  // check to see if we're currently searching
-  if (!!req.query.search && !!req.query.search.length) {
-    return searchView(req, res, next);
-  }
-
   // todo: pagination / limit load
-  Order.count({}, function (err, count) {
+  // Order.count(function (err, count) { do we need to pass an empty obj?
+  Order.count({}, function (err, count) { // get post count junk
+
+    // check to see if we're currently searching
+    if (!!req.query.search && !!req.query.search.length) {
+      paginate({
+        conditions: { "exampleVal": { "$regex": req.query.search } }
+      }, function (docs) {
+        return res.send('search');
+        // return searchView(req, res, next);
+      });
+    }
+
 
     Order.find({}, {}, { skip: 0, limit: 5 }, function (err, docs) {
       res.render('list', {
