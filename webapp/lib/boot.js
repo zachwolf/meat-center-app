@@ -68,11 +68,11 @@ module.exports = function(parent, options){
           method = 'get';
           path = '/';
           break;
-        case 'custom':
+        // case 'custom':
           //  todo: custom path rendering
           // method = 'get';
           // path = '/';
-          break;
+          // break;
         default:
           throw new Error('unrecognized route: ' + name + '.' + key);
       }

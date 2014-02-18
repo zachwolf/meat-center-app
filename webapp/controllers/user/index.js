@@ -3,7 +3,7 @@
 
 // app.get('/tests')
 // todo? can we change the boot method to be extendable?
-exports.custom = [
+/*exports.custom = [
   {
     path: "login",
     method: "get",
@@ -19,4 +19,4 @@ exports.custom = [
       return res.redirect('/login');
     }
   }
-];
+];*/
