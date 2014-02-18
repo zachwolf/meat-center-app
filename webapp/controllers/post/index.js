@@ -37,42 +37,60 @@ var mongoose = require('mongoose'),
 }*/
 
 function paginate (settings, cb) { /* settings: { conditions: {}, fields: {}, options: {} } */
-  var conditions = settings.conditions || {},
+  var info       = {},
+      conditions = settings.conditions || {},
       fields     = settings.fields || {},
       options    = settings.options || {}; /* here we can unify pagination */
 
-  Order.find(conditions, fields, options, function (err, docs) {
-    if (err) { throw new Error(err); }
-    cb(docs);
+  Order.count({}, function (err, count) { // get post count junk
+    // todo: info current page
+    // todo? info next/prev page
+    info.count = count;
+    info.pageCount = Math.ceil(info.count / options.limit);
+
+    Order.find(conditions, fields, options, function (err, docs) {
+      if (err) { throw new Error(err); }
+      cb(docs, info);
+    });
   });
 }
 
 // app.get('/posts');
+// app.get('/posts/:page_number');
+// app.get('/posts?search=foo');
 exports.list = function(req, res, next){
 
   // todo: pagination / limit load
-  // Order.count(function (err, count) { do we need to pass an empty obj?
-  Order.count({}, function (err, count) { // get post count junk
+  // todo: pagination is currently zero based and it should be 1 based
+  // todo: page limiting (so you can't go to page 9 when there are 5 pages of results)
+  // todo: page offset
 
-    // check to see if we're currently searching
-    if (!!req.query.search && !!req.query.search.length) {
-      paginate({
-        conditions: { "exampleVal": { "$regex": req.query.search } }
-      }, function (docs) {
-        return res.send('search');
-        // return searchView(req, res, next);
-      });
-    }
+  // default to all posts
+  var page = req.params.page_id || 1,
+      settings = {/*
+          conditions: {},
+          fields: {},
+        */
+        options: {
+          // skip limit * page number
+          skip: page * 5,
+          limit: 5
+        }
+      },
+      render = function (docs, collectionInfo) {
+        return res.render('list', {
+          orders: docs,
+          pagination: collectionInfo
+        });
+      };
 
+  // check to see if we're currently searching
+  if (!!req.query.search && !!req.query.search.length) {
+    settings.conditions = { "exampleVal": { "$regex": req.query.search } };
+  }
 
-    Order.find({}, {}, { skip: 0, limit: 5 }, function (err, docs) {
-      res.render('list', {
-        message: req.flash('message')[0],
-        orders: docs,
-        count: count
-      });
-    });
-  });
+  // call and render
+  paginate(settings, render);
 
 };
 
