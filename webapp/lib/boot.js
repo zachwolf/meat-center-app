@@ -42,7 +42,7 @@ module.exports = function(parent, options){
           break;
         case 'list':
           method = 'get';
-          path = '/' + name + 's';
+          path = '/' + name + 's/:page_id?';
           break;
         case 'edit':
           method = 'get';
