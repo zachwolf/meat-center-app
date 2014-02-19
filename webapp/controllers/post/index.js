@@ -78,6 +78,10 @@ exports.list = function(req, res, next){
         }
       },
       render = function (docs, collectionInfo) {
+        if (!docs.length) {
+          return res.render("no-results");
+        }
+
         return res.render('list', {
           orders: docs,
           pagination: collectionInfo
