@@ -26,6 +26,7 @@
 	</li>
 	{{/if}}
 
+	{{! todo: current page shouldn't be a link}}
 	{{#for pagination.pageCount}}
 		<a href="/posts/{{this}}"
 			{{~#does this "equal" ../pagination.currentPage}} class="current" {{/does~}}
