@@ -1,4 +1,4 @@
-{{! debug}}
+{{debug}}
 
 <a href="/post/new">Create new</a>
 <br>
@@ -17,3 +17,30 @@
 </table>
 
 {{count}}
+<hr>
+<ul>
+	{{#if pagination.hasPrev}}
+	<li>
+		{{! todo: remove inline url declaration}}
+		<a href="/posts/{{pagination.prev}}">Previous Page</a>
+	</li>
+	{{/if}}
+
+	{{#for pagination.pageCount}}
+		<a href="/posts/{{this}}"
+			{{~#does this "equal" ../pagination.currentPage}} class="current" {{/does~}}
+			>{{this}}</a>
+	{{/for}}
+
+	{{#if pagination.hasNext}}
+	<li>
+		{{! todo: remove inline url declaration}}
+		<a href="/posts/{{pagination.next}}">Next Page</a>
+	</li>
+	{{/if}}
+</ul>
+pagination.count: {{pagination.count}} <br>
+pagination.pageCount: {{pagination.pageCount}} <br>
+pagination.currentPage: {{pagination.currentPage}} <br>
+pagination.hasNext: {{pagination.hasNext}} <br>
+pagination.hasPrevious: {{pagination.hasPrevious}} <br>

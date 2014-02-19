@@ -40,17 +40,39 @@ function paginate (settings, cb) { /* settings: { conditions: {}, fields: {}, op
   var info       = {},
       conditions = settings.conditions || {},
       fields     = settings.fields || {},
-      options    = settings.options || {}; /* here we can unify pagination */
+      options    = settings.options || {}, /* here we can unify pagination */
+      page       = settings.page;
 
-  Order.count({}, function (err, count) { // get post count junk
-    // todo: info current page
-    // todo? info next/prev page
+  if (options.skip < 0) {
+    cb(new Error("Invalid page number"));
+  }
+
+  Order.count(conditions, function (err, count) { // get post count junk
+
+    // todo: record count when searching
+    // total records
     info.count = count;
+
+    // range of results we're currently seeing
+    // info.range = offset * pageItemCount % count?;
+
+    // how many total pages there are
     info.pageCount = Math.ceil(info.count / options.limit);
+
+    // current page number
+    info.currentPage = page;
+
+    // next page
+    info.hasNext = (page + 1 <= info.pageCount) ? true : false;
+    info.next = page + 1;
+
+    // prev page
+    info.hasPrev = (page - 1 > 0) ? true : false;
+    info.prev = page - 1;
 
     Order.find(conditions, fields, options, function (err, docs) {
       if (err) { throw new Error(err); }
-      cb(docs, info);
+      cb(null, docs, info);
     });
   });
 }
@@ -61,23 +83,29 @@ function paginate (settings, cb) { /* settings: { conditions: {}, fields: {}, op
 exports.list = function(req, res, next){
 
   // todo: pagination / limit load
-  // todo: pagination is currently zero based and it should be 1 based
   // todo: page limiting (so you can't go to page 9 when there are 5 pages of results)
   // todo: page offset
 
   // default to all posts
-  var page = req.params.page_id || 1,
+  var page = parseInt(req.params.page_id, 10) || 1,
       settings = {/*
           conditions: {},
           fields: {},
         */
         options: {
           // skip limit * page number
-          skip: page * 5,
+          skip: (page - 1) * 5,
           limit: 5
-        }
+        },
+        page: page
       },
-      render = function (docs, collectionInfo) {
+      render = function (err, docs, collectionInfo) {
+
+        // error handling
+        if (err) {
+          console.log("err!", err);
+        }
+
         if (!docs.length) {
           return res.render("no-results");
         }
