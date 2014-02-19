@@ -49,11 +49,10 @@ function paginate (settings, cb) { /* settings: { conditions: {}, fields: {}, op
 
   Order.count(conditions, function (err, count) { // get post count junk
 
-    // todo: record count when searching
     // total records
     info.count = count;
 
-    // range of results we're currently seeing
+    // todo: range of results we're currently seeing
     // info.range = offset * pageItemCount % count?;
 
     // how many total pages there are
@@ -84,7 +83,6 @@ exports.list = function(req, res, next){
 
   // todo: pagination / limit load
   // todo: page limiting (so you can't go to page 9 when there are 5 pages of results)
-  // todo: page offset
 
   // default to all posts
   var page = parseInt(req.params.page_id, 10) || 1,
