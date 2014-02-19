@@ -8,9 +8,19 @@ module.exports.debug = function (value) {
   return;
 };
 
-module.exports.for = function(to, block) {
-    var accum = '';
-    for(var i = 1; i < to + 1; i += 1)
-        accum += block.fn(i);
-    return accum;
+module.exports.for = function(to, options) {
+  var accum = '';
+  for(var i = 1; i < to + 1; i += 1) {
+    accum += options.fn(i);
+  }
+  return accum;
+};
+
+// logic
+module.exports.does = function(thisVal, op, thatVal, options) {
+  var results;
+  switch(op) {
+    case "equal":
+      return (thisVal === thatVal) ? options.fn(this) : options.inverse(this);
+  }
 };
