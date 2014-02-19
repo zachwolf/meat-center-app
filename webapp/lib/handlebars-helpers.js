@@ -10,7 +10,7 @@ module.exports.debug = function (value) {
 
 module.exports.for = function(to, block) {
     var accum = '';
-    for(var i = 0; i < to; i += 1)
+    for(var i = 1; i < to + 1; i += 1)
         accum += block.fn(i);
     return accum;
 };
