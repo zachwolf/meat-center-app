@@ -1,4 +1,4 @@
-exports.debug = function (value) {
+module.exports.debug = function (value) {
   console.log("------------------  handlebars debug  --------------------");
   console.log("this", this);
   if(!!value) {
@@ -6,4 +6,11 @@ exports.debug = function (value) {
   }
   console.log("------------------ /handlebars debug  --------------------");
   return;
+};
+
+module.exports.for = function(to, block) {
+    var accum = '';
+    for(var i = 0; i < to; i += 1)
+        accum += block.fn(i);
+    return accum;
 };
